@@ -21,6 +21,7 @@
     "ncu:u": "ncu -u --reject react,react-dom,@types/react,@types/react-dom"
   },
   "dependencies": {
+    "@balavishnuvj/remix-seo": "^1.0.2",
     "@remix-kawaii/named": "^1.0.1",
     "@remix-run/cloudflare": "^1.14.3",
     "@remix-run/cloudflare-pages": "^1.14.3",
@@ -40,6 +41,7 @@
     "react-icons": "^4.8.0",
     "react-particles": "^2.9.3",
     "rehype-highlight": "^6.0.0",
+    "remix-seo": "^0.1.0",
     "remix-utils": "^6.0.0",
     "rooks": "^7.8.1",
     "tailwind-scrollbar": "^3.0.0",

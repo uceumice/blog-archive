@@ -8,26 +8,43 @@ import { Background } from "./components/background";
 
 import { ToggleTheme } from "@/shared/components/toggle-theme";
 import { useGlobalCursor } from "@/shared/store/global.cursor.store";
+import { ToggleLanguage } from "@/shared/components/toggle-language";
+import { useTranslate } from "@/shared/modules/language";
 
 // ----
 export function $Publ() {
+  const t = useTranslate();
   const scv = useGlobalCursor((s) => {
     return s.set.visible;
   });
+
   return (
     <div className={clsx(["w-full h-full overflow-hidden"])}>
-      <motion.div
-        className={clsx(["fixed top-5 left-5"])}
-        whileHover={{ scale: 0.9 }}
-        onHoverStart={() => {
-          return scv(false);
-        }}
-        onHoverEnd={() => {
-          return scv(true);
-        }}
-      >
-        <ToggleTheme className="bg-transparent cursor-none" />
-      </motion.div>
+      <div className={clsx(["fixed top-5 left-5", "flex flex-row gap-2"])}>
+        <motion.div
+          whileHover={{ scale: 0.9 }}
+          onHoverStart={() => {
+            return scv(false);
+          }}
+          onHoverEnd={() => {
+            return scv(true);
+          }}
+        >
+          <ToggleTheme className="bg-transparent cursor-none" />
+        </motion.div>
+        <motion.div
+          whileHover={{ scale: 0.9 }}
+          onHoverStart={() => {
+            return scv(false);
+          }}
+          onHoverEnd={() => {
+            return scv(true);
+          }}
+        >
+          <ToggleLanguage className="bg-transparent cursor-none" />
+        </motion.div>
+      </div>
+
       <motion.div
         onHoverStart={() => {
           return scv(false);
@@ -42,7 +59,13 @@ export function $Publ() {
           to="/manage"
           className={clsx(["btn btn-md btn-circle bg-transparent cursor-none"])}
         >
-          <RiLoginCircleLine className="w-5 h-5" />
+          <RiLoginCircleLine
+            className="w-5 h-5"
+            aria-label={t({
+              en: "Login into Management Panel.",
+              de: "In Kontrollpanel einloggen.",
+            })}
+          />
         </Link>
       </motion.div>
 
@@ -72,10 +95,13 @@ export function $Publ() {
           className="cursor-none"
           target="uceumice::github"
         >
-          <h1 className="text-4xl font-black">Hello, it's me,</h1>
+          <h1 className="text-4xl font-black">
+            {t({ en: "Hello, it's me,", de: "Hey, ich bin's," })}
+          </h1>
           <h1 className="text-5xl font-black">UCEUMICE</h1>
         </a>
       </motion.div>
+      
       <div
         className={clsx([
           "fixed bottom-5",

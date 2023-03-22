@@ -3,12 +3,14 @@ import { forwardRef, useMemo } from "react";
 import { RxSun, RxMoon, RxDot } from "react-icons/rx";
 
 import { useThemeStore } from "@/shared/modules/theme/store";
+import { useTranslate } from "@/shared/modules/language";
 
 // ----
 export const ToggleTheme = forwardRef<
   HTMLButtonElement,
-  Omit<React.HTMLProps<HTMLButtonElement>, "onClick">
->(({ className }, ref) => {
+  Omit<React.HTMLProps<HTMLButtonElement>, "onClick" | "ref">
+>(({ className, ...props }, ref) => {
+  const t = useTranslate();
   const mode = useThemeStore((s) => {
     return s.mode;
   });
@@ -21,13 +23,22 @@ export const ToggleTheme = forwardRef<
     if (mode === "light") return RxMoon;
     return RxDot;
   }, [mode]);
+
   return (
+    // @ts-ignore
     <button
       ref={ref}
       className={clsx(["btn btn-md btn-circle", className])}
       onClick={change}
+      {...props}
     >
-      <Icon className={clsx(["w-5 h-5"])} />
+      <Icon
+        className={clsx(["w-5 h-5"])}
+        aria-label={t({
+          en: "Change Color Theme",
+          de: "Farbenpalette ändern",
+        })}
+      />
     </button>
   );
 });

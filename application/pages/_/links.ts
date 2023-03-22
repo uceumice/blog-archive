@@ -10,18 +10,6 @@ export const links: LinksFunction = () => {
       rel: "manifest",
       href: "/site.webmanifest",
     },
-    {
-      href: "https://fontbit.io",
-      rel: "preconnect",
-    },
-    {
-      href: `https://fontbit.io/css2?${[
-        `family=Archivo:wght@400;700`,
-        `family=Public+Sans`,
-        `family=Gaegu`,
-      ].join("&")}&display=swap`,
-      rel: "stylesheet",
-    },
     ...favicons,
   ];
 };
