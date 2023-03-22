@@ -55,8 +55,8 @@ export function $Publ() {
         className={clsx(["fixed", "top-5 right-5"])}
         whileHover={{ scale: 0.9 }}
       >
-        <Link
-          to="/manage"
+        <a
+          href="/manage"
           className={clsx(["btn btn-md btn-circle bg-transparent cursor-none"])}
         >
           <RiLoginCircleLine
@@ -66,7 +66,7 @@ export function $Publ() {
               de: "In Kontrollpanel einloggen.",
             })}
           />
-        </Link>
+        </a>
       </motion.div>
 
       <motion.div
@@ -101,7 +101,7 @@ export function $Publ() {
           <h1 className="text-5xl font-black">UCEUMICE</h1>
         </a>
       </motion.div>
-      
+
       <div
         className={clsx([
           "fixed bottom-5",
