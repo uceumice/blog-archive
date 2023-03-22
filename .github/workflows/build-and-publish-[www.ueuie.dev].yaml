@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - "/build.pages.json"
+      - "trigger/build.pages.json"
 
 env:
   APPLICATION_DIRECTORY: ./
