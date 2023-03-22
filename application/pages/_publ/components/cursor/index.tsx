@@ -1,12 +1,19 @@
-import { useGlobalCursor } from "@/shared/store/global.cursor.store";
-import { useEffect } from "react";
 import clsx from "clsx";
+import { useEffect } from "react";
+
+import { useGlobalCursor } from "@/shared/store/global.cursor.store";
 
 // ----
 export function Cursor() {
-  const visible = useGlobalCursor((s) => s.visible);
-  const position = useGlobalCursor((s) => s.position);
-  const setPosition = useGlobalCursor((s) => s.set.position);
+  const visible = useGlobalCursor((s) => {
+    return s.visible;
+  });
+  const position = useGlobalCursor((s) => {
+    return s.position;
+  });
+  const setPosition = useGlobalCursor((s) => {
+    return s.set.position;
+  });
 
   // ----
   useEffect(() => {
@@ -19,7 +26,7 @@ export function Cursor() {
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
     };
-  }, []);
+  }, [setPosition]);
 
   return (
     <div className={clsx([!visible && "hidden", "max-sm:hidden"])}>

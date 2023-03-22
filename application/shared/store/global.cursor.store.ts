@@ -16,23 +16,27 @@ interface State {
 
 // ----
 export const useGlobalCursor = create(
-  immer<State>((set, get) => ({
-    position: {
-      x: 0,
-      y: 0,
-    },
-    visible: true,
+  immer<State>((set) => {
+    return {
+      position: {
+        x: 0,
+        y: 0,
+      },
+      visible: true,
 
-    set: {
-      position: (coordinates) =>
-        set((s) => {
-          s.position.x = coordinates.x || s.position.x;
-          s.position.y = coordinates.y || s.position.y;
-        }),
-      visible: (is) =>
-        set((s) => {
-          s.visible = is;
-        }),
-    },
-  }))
+      set: {
+        position: (coordinates) => {
+          return set((s) => {
+            s.position.x = coordinates.x || s.position.x;
+            s.position.y = coordinates.y || s.position.y;
+          });
+        },
+        visible: (is) => {
+          return set((s) => {
+            s.visible = is;
+          });
+        },
+      },
+    };
+  }),
 );

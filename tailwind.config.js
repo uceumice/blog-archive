@@ -8,15 +8,16 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
     require("tailwind-scrollbar"),
-    require("daisyui")
+    require("daisyui"),
   ],
   daisyui: {
     themes: [
       {
         dark: {
           ...require("daisyui/src/colors/themes")["[data-theme=black]"],
-        }
-      }, {
+        },
+      },
+      {
         light: {
           "color-scheme": "light",
           primary: "#b8b8b8",
@@ -39,6 +40,7 @@ module.exports = {
           "--btn-focus-scale": "1",
           "--tab-radius": "0",
         },
-      }],
+      },
+    ],
   },
 };

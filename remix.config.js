@@ -15,6 +15,6 @@ module.exports = {
     unstable_tailwind: true,
     unstable_dev: {
       appServerPort: 8788,
-    }
-  }
+    },
+  },
 };

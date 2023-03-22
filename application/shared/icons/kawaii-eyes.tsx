@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 export const IcKawaiiEyes = forwardRef<
   SVGSVGElement,
   React.SVGProps<SVGSVGElement>
->((props, ref) => {
+>((props) => {
   return (
     <svg
       width="100"

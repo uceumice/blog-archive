@@ -2,7 +2,7 @@
 /// <reference types="@remix-run/cloudflare" />
 /// <reference types="@cloudflare/workers-types" />
 
-import { Bindings } from "./module/types/bindings";
+import type { Bindings } from "./module/types/bindings";
 
 // [*]
 declare module "@remix-run/cloudflare" {

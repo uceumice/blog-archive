@@ -1,6 +1,7 @@
 import { Outlet } from "@remix-run/react";
-import { Cursor } from "./components/cursor";
 import { ReactLenis } from "@studio-freight/react-lenis";
+
+import { Cursor } from "./components/cursor";
 
 // ----
 export function $$Publ() {

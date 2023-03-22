@@ -1,10 +1,9 @@
 import { useFetcher } from "@remix-run/react";
 import React from "react";
 import { useDidUpdate } from "rooks";
-import { useLanguageStore } from "../store";
 
 import { name } from "./server-persistance-action-name";
-
+import { useLanguageStore } from "../store";
 
 // ----
 export function ServerPersistance({ action }: { action: string }) {

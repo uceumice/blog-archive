@@ -1,12 +1,16 @@
 import { useCallback } from "react";
-import type { Container, Engine } from "tsparticles-engine";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
+
 import { useThemeStore } from "@/shared/modules/theme/store";
+
+import type {  Engine } from "tsparticles-engine";
 
 // ----
 export function Background() {
-  const mode = useThemeStore((s) => s.mode);
+  const mode = useThemeStore((s) => {
+    return s.mode;
+  });
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log("🫦 Initializing particles!");
 
@@ -16,12 +20,9 @@ export function Background() {
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      console.log("🥳 Particles generator has been loaded!");
-    },
-    []
-  );
+  const particlesLoaded = useCallback(async () => {
+    console.log("🥳 Particles generator has been loaded!");
+  }, []);
 
   return (
     <Particles

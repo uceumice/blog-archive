@@ -1,8 +1,8 @@
 import { json } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 
-import { getTheme } from "@/shared/modules/theme";
 import { getLanguage } from "@/shared/modules/language";
+import { getTheme } from "@/shared/modules/theme";
 
 import type { LoaderArgs } from "@remix-run/cloudflare";
 

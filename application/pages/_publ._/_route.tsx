@@ -1,29 +1,40 @@
-import { ToggleTheme } from "@/shared/components/toggle-theme";
-import { $path } from "@remix-kawaii/routes";
 import { Link } from "@remix-run/react";
 import clsx from "clsx";
-import { RiLoginCircleLine } from "react-icons/ri";
-import { Background } from "./components/background";
-import { CgScrollV } from "react-icons/cg";
-import { useGlobalCursor } from "@/shared/store/global.cursor.store";
 import { motion } from "framer-motion";
+import { CgScrollV } from "react-icons/cg";
+import { RiLoginCircleLine } from "react-icons/ri";
+
+import { Background } from "./components/background";
+
+import { ToggleTheme } from "@/shared/components/toggle-theme";
+import { useGlobalCursor } from "@/shared/store/global.cursor.store";
 
 // ----
 export function $Publ() {
-  const scv = useGlobalCursor((s) => s.set.visible);
+  const scv = useGlobalCursor((s) => {
+    return s.set.visible;
+  });
   return (
     <div className={clsx(["w-full h-full overflow-hidden"])}>
       <motion.div
         className={clsx(["fixed top-5 left-5"])}
         whileHover={{ scale: 0.9 }}
-        onHoverStart={() => scv(false)}
-        onHoverEnd={() => scv(true)}
+        onHoverStart={() => {
+          return scv(false);
+        }}
+        onHoverEnd={() => {
+          return scv(true);
+        }}
       >
         <ToggleTheme className="bg-transparent cursor-none" />
       </motion.div>
       <motion.div
-        onHoverStart={() => scv(false)}
-        onHoverEnd={() => scv(true)}
+        onHoverStart={() => {
+          return scv(false);
+        }}
+        onHoverEnd={() => {
+          return scv(true);
+        }}
         className={clsx(["fixed", "top-5 right-5"])}
         whileHover={{ scale: 0.9 }}
       >

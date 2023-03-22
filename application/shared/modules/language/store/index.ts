@@ -1,9 +1,8 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
+import { init } from "zustand-create";
 
 import { languages } from "../shared/options";
-
-import { init } from "zustand-create";
 
 import type { Language } from "../shared/_types";
 

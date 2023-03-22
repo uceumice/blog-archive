@@ -1,8 +1,8 @@
 import React from "react";
 
 import { use$$Root } from "@/pages/_/_loader";
-import { ThemeProvider } from "@/shared/modules/theme";
 import { LanguageProvider } from "@/shared/modules/language/components/language-provider";
+import { ThemeProvider } from "@/shared/modules/theme";
 
 // ----
 export function Providers({ children }: React.PropsWithChildren<{}>) {

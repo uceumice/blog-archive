@@ -1,4 +1,4 @@
-import { DataFunctionArgs } from "@remix-run/cloudflare";
+import type { DataFunctionArgs } from "@remix-run/cloudflare";
 
 // ----
 export const getEnvVar = async (_: DataFunctionArgs) => {

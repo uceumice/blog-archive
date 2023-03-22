@@ -1,4 +1,5 @@
 import type { LinkDescriptor, LinksFunction } from "@remix-run/cloudflare";
+
 import styles from "@/root.css";
 
 // ----

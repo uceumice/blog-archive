@@ -4,8 +4,8 @@ import { parseForm } from "zodix";
 import { theme_mode_action, theme_name_action } from "./_names";
 import { getThemeSession } from "./server-session";
 import { name as s_name, mode as s_mode } from "../shared/schemas";
-import { NamedActions } from "@remix-kawaii/named/out/get-named";
 
+import type { NamedActions } from "@remix-kawaii/named/out/get-named";
 
 // ----
 export const actions: NamedActions = {

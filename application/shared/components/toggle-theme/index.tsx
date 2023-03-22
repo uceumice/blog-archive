@@ -1,15 +1,20 @@
-import { useThemeStore } from "@/shared/modules/theme/store";
+import clsx from "clsx";
 import { forwardRef, useMemo } from "react";
 import { RxSun, RxMoon, RxDot } from "react-icons/rx";
-import clsx from "clsx";
+
+import { useThemeStore } from "@/shared/modules/theme/store";
 
 // ----
 export const ToggleTheme = forwardRef<
   HTMLButtonElement,
   Omit<React.HTMLProps<HTMLButtonElement>, "onClick">
->(({ className, ...props }, ref) => {
-  const mode = useThemeStore((s) => s.mode);
-  const change = useThemeStore((s) => s.setNextMode);
+>(({ className }, ref) => {
+  const mode = useThemeStore((s) => {
+    return s.mode;
+  });
+  const change = useThemeStore((s) => {
+    return s.setNextMode;
+  });
 
   const Icon = useMemo(() => {
     if (mode === "dark") return RxSun;

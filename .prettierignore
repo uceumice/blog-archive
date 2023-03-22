@@ -6,3 +6,13 @@
 
 # Remix Pages Build
 /functions
+
+# PNPM
+/pnpm-lock.json
+
+# ----
+.cache
+.vscode
+.github
+README.md
+wrangler.toml
