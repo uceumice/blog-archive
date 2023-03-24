@@ -10,6 +10,7 @@ Ad astra abyssosque, Traveler✨
 - [HackerRank](https://www.hackerrank.com/uceumice)
 - [LeetCode](https://leetcode.com/uceumice)
 - [Awwwards](https://www.awwwards.com/uceumice/)
+- [SoundCloud](https://soundcloud.com/uceumice)
 
 ## Planned Blogs
 
