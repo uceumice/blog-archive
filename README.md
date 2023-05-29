@@ -45,10 +45,10 @@ pnpm build
 
 To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
-pnpm dev
-```
+- [CodeForces](https://codeforces.com/profile/lepricon)
+- [HackerRank](https://www.hackerrank.com/uceumice)
+- [LeetCode](https://leetcode.com/uceumice)
+- [Awwwards](https://www.awwwards.com/uceumice/)
 
 ### Remote Caching
 
