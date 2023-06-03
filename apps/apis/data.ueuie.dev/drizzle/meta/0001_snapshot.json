@@ -1,0 +1,43 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "91202943-33ea-462c-ab74-d6e230f16612",
+  "prevId": "82b8f7f2-913a-45cb-bb13-3b17256f7efe",
+  "tables": {
+    "emails": {
+      "name": "emails",
+      "columns": {
+        "timestamp": {
+          "name": "timestamp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "address": {
+          "name": "address",
+          "type": "text(320)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "token": {
+          "name": "token",
+          "type": "text(21)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"emails\".\"addedat\"": "\"emails\".\"timestamp\""
+    }
+  }
+}

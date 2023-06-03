@@ -1,0 +1,25 @@
+---
+import { getLangSSR } from "../../utils/i18n";
+import { getLegalPage } from "../../utils/contents/get-legal-page";
+import Legal from "../../layouts/legal/legal.astro";
+import { setCanonical } from "../../utils/canonical";
+
+/* -------------------------------------------------------------------------- */
+/*                                     SSR                                    */
+/* -------------------------------------------------------------------------- */
+const slug = Astro.params.slug!;
+
+const page = await getLegalPage(getLangSSR(Astro), slug);
+
+if (!page) {
+  return Astro.redirect("/404");
+}
+const { Content } = await page.render();
+
+/* --------------------------------- Headers -------------------------------- */
+setCanonical(Astro, "legal", slug);
+---
+
+<Legal data={page.data}>
+  <Content />
+</Legal>

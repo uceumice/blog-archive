@@ -1,0 +1,73 @@
+on:
+  push:
+    branches:
+      - "production"
+    paths:
+      - "**/*"
+      - "!.eslintignore"
+      - "!.eslintrc"
+      - "!.prettierignore"
+      - "!.prettierrc"
+      - "!.stylelintignore"
+      - "!.stylelintrc"
+      - "!README.md"
+
+env:
+  APPLICATION_DIRECTORY: ./apps/web/blog.ueuie.dev
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    environment: execution
+    permissions:
+      contents: read
+      deployments: write
+    name: Build Astro + Publish to Cloudflare Pages
+
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+
+      # ----
+      - name: ⎔ Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: 💫 Include pnpm cache (store)
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: setup `pnpm`` cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      # ----
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🖇 Build application
+        run: pnpm build --filter @uceumice/blog.ueuie.dev
+
+      # ----
+      - name: 🧸 Publish to cloudflare pages
+        uses: cloudflare/pages-action@22d9e5e143c6f9400b438a489e8d434b416d235d
+        with:
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: ${{ secrets.CF_PN_BLOG }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          directory: public
+          workingDirectory: ${{ env.APPLICATION_DIRECTORY }}

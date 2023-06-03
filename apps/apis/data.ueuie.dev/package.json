@@ -1,0 +1,37 @@
+{
+  "name": "@uceumice/data.ueuie.dev",
+  "private": true,
+  "typings": "./dist.type/trpc.d.ts",
+  "main": "./src/worker.ts",
+  "scripts": {
+    "dev": "npm-run-all -s db.drizzle.generate db.apply.local -p dev.*",
+    "dev.cf": "cross-env NODE_ENV=development wrangler dev src/worker.ts",
+    "dev.ts": "tsup --watch",
+    "db.apply": "wrangler d1 migrations apply ueuie-blog-api",
+    "db.apply.local": "wrangler d1 migrations apply ueuie-blog-api --local",
+    "db.drizzle.generate": "drizzle-kit generate:sqlite",
+    "format": "prettier --write .",
+    "eslint": "eslint --cache --ext . --report-unused-disable-directives src",
+    "eslint.fix": "eslint --cache --ext . --fix --report-unused-disable-directives src ",
+    "deploy.cf": "cross-env NODE_ENV=production wrangler deploy ./src/worker.ts",
+    "deploy": "run-s format db.drizzle.generate db.apply deploy.cf",
+    "checks": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "@readme/eslint-config": "^10.5.4",
+    "@uceumice/eslint-config": "workspace:*",
+    "@uceumice/prettier-config": "workspace:*",
+    "npm-run-all": "^4.1.5",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.28.2",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.7",
+    "nanoid": "^4.0.2",
+    "zod": "^3.21.4"
+  }
+}

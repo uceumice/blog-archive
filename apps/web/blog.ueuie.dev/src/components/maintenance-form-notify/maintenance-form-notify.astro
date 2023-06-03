@@ -1,0 +1,62 @@
+---
+import { getTodos } from "~/components/scripts/get-todo";
+import TodoLabel from "~/components/todo-label/todo-label.astro";
+import { getLangSSR } from "~/utils/i18n";
+import { Logo } from "../shared/icons/logo";
+import NewsletterSubscription from "~/components/forms/newsletter-submission/newsletter-subscription.astro";
+
+const lang = getLangSSR(Astro);
+const selected = getTodos(3, lang);
+---
+
+<div class:list={["p-8"]}>
+  <main class:list={["flex flex-col items-stretch gap-8"]}>
+    <div class:list={["max-w-md", "flex flex-col items-stretch gap-4"]}>
+      <div
+        class:list={[
+          "p-4",
+          "border border-primary",
+          "sm:backdrop-blur-lg",
+          "max-sm:bg-base-100",
+        ]}
+      >
+        <p class:list={["text-sm font-bold text-justify"]}>
+          {
+            lang === "en" ? (
+              <>
+                Hey, this page is currently undergoing active development. In
+                the meantime, you can
+                <TodoLabel {...selected[0]!} />
+                ,
+                <TodoLabel {...selected[1]!} />
+                or
+                <TodoLabel {...selected[2]!} />.
+              </>
+            ) : (
+              <>
+                Ця сторінка знаходиться в стадії активної розробки. Вкажи свою
+                електронну адресу, якщо хочеш отримати повідомлення щодо статусу
+                сторінки. Тим часом можеш
+                <TodoLabel {...selected[0]!} />
+                ,
+                <TodoLabel {...selected[1]!} />
+                or
+                <TodoLabel {...selected[2]!} />
+              </>
+            )
+          }
+        </p>
+        <div
+          class:list={[
+            "w-full",
+            "pt-4",
+            "flex justify-between items-center gap-4",
+          ]}
+        >
+          <Logo class:list={["w-6 h-6"]} />
+          <NewsletterSubscription  />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,9 @@
+# types build
+./dist.type
+
+# cloudflare
+.wrangler
+
+# database
+./drizzle
+

@@ -1,0 +1,33 @@
+---
+import Social from "./components/social.astro";
+import Legals from "./components/legals.astro";
+---
+
+<div
+  id="footer"
+  class:list={[
+    "w-full max-w-full",
+    "p-4",
+    "flex justify-between items-center gap-4",
+    "border-t border-t-primary-focus backdrop-blur-md",
+    "z-10",
+    // Mobile
+    "max-sm:flex-col",
+  ]}
+>
+  <div
+    class:list={[
+      "w-full",
+      "flex justify-start",
+      // Mobile
+      "max-sm:w-full max-sm:justify-between ",
+    ]}
+  >
+    <div class:list={["flex items-center gap-8"]}>
+      <Social />
+    </div>
+  </div>
+  <div class:list={["w-full", "flex justify-end"]}>
+    <Legals />
+  </div>
+</div>

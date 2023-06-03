@@ -1,0 +1,40 @@
+---
+interface Props {
+  enable: boolean;
+}
+---
+
+<>
+  <style>
+    .hide-html {
+      visibility: hidden;
+      overflow: hidden;
+      width: 0;
+      height: 0;
+    }
+  </style>
+  <script define:vars={{ enable: Astro.props.enable }}>
+    function set() {
+      var prefers = dark() ? "black" : "light";
+      document.documentElement.setAttribute("data-theme", prefers);
+    }
+
+    function dark() {
+      return (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      );
+    }
+
+    if (enable) {
+      set();
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (event.matches) {
+            set();
+          }
+        });
+    }
+  </script>
+</>

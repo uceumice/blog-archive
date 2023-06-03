@@ -1,0 +1,4 @@
+{
+  "extends": "@uceumice/eslint-config/eslint.worker",
+  "root": true
+}

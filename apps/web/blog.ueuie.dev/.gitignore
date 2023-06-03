@@ -1,0 +1,8 @@
+# generated types
+.astro/
+
+# build output
+dist/
+
+# eslint
+.eslintcache
