@@ -61,12 +61,14 @@ jobs:
 
       # ----
       - name: 🧸 Publish to cloudflare pages
-        uses: cloudflare/pages-action@v1.5.0
-        with:
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          projectName: ${{ secrets.CF_PN_BLOG }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          directory: dist
-          branch: production
-          workingDirectory: ${{ env.APPLICATION_DIRECTORY }}
+        run: pnpm deploy.cf
+        working-directory: ${{ env.APPLICATION_DIRECTORY }}
+        # uses: cloudflare/pages-action@v1.5.0
+        # with:
+        #   gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        #   projectName: ${{ secrets.CF_PN_BLOG }}
+        #   accountId: ${{ secrets.CF_ACCOUNT_ID }}
+        #   apiToken: ${{ secrets.CF_API_TOKEN }}
+        #   directory: dist
+        #   branch: production
+        #   workingDirectory: ${{ env.APPLICATION_DIRECTORY }}
