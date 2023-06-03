@@ -3,7 +3,7 @@ on:
     branches:
       - "production"
     paths:
-      - "**/*"
+      - "/apps/web/blog.ueuie.dev/**/*"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
