@@ -3,7 +3,8 @@
     "**/.cache": true,
     "**/node_modules": true,
     "**/dist": true,
-    "**/dist.type": true
+    "**/dist.type": true,
+    "**/.turbo": true
   },
   "git.ignoreLimitWarning": true,
   "tailwindCSS.classAttributes": [
