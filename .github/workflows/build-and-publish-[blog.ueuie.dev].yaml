@@ -61,11 +61,12 @@ jobs:
 
       # ----
       - name: 🧸 Publish to cloudflare pages
-        uses: cloudflare/pages-action@22d9e5e143c6f9400b438a489e8d434b416d235d
+        uses: cloudflare/pages-action
         with:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: ${{ secrets.CF_PN_BLOG }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          directory: public
+          directory: dist
+          branch: production
           workingDirectory: ${{ env.APPLICATION_DIRECTORY }}
