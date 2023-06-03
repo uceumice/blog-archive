@@ -64,4 +64,4 @@ jobs:
         run: pnpm run deploy.cf
         working-directory: ${{ env.APPLICATION_DIRECTORY }}
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CF_TOKEN }}
