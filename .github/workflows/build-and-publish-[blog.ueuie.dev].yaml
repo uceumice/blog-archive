@@ -61,7 +61,7 @@ jobs:
 
       # ----
       - name: 🧸 Publish to cloudflare pages
-        run: pnpx CLOUDFLARE_API_TOKEN  deploy.cf
+        run: pnpx deploy.cf
         working-directory: ${{ env.APPLICATION_DIRECTORY }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
