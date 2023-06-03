@@ -4,6 +4,7 @@ on:
       - "production"
     paths:
       - "./apps/web/blog.ueuie.dev/**/*"
+      - "./.github/workflows/build-and-publish-[blog.ueuie.dev].yaml"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
