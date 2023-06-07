@@ -12,7 +12,6 @@
         "dist"
     ],
     "devDependencies": {
-        "@uceumice/tsup": "workspace:*",
         "tsup": "^6.7.0"
     }
 }

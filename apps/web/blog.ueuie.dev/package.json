@@ -16,8 +16,8 @@
     "eslint.fix": "eslint --cache --ext . --fix"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^6.3.0",
-    "@astrojs/mdx": "^0.19.6",
+    "@astrojs/cloudflare": "^6.4.0",
+    "@astrojs/mdx": "^0.19.7",
     "@astrojs/partytown": "^1.2.3",
     "@astrojs/prefetch": "^0.2.3",
     "@astrojs/rss": "^2.4.3",
@@ -27,13 +27,13 @@
     "@studio-freight/lenis": "^1.0.14",
     "@tanstack/solid-query": "^4.29.11",
     "@trpc/client": "^10.29.1",
+    "@trpc/server": "^10.29.1",
     "@uceumice/constants": "workspace:*",
-    "astro": "^2.5.7",
+    "astro": "^2.6.1",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.8",
     "sitemap": "^7.1.1",
     "solid-js": "^1.7.6",
-    "solid-trpc": "^0.0.9",
     "tailwindcss": "^3.3.2",
     "xstate": "^4.37.2",
     "zod": "^3.21.4"
@@ -45,6 +45,6 @@
     "@uceumice/prettier-config": "workspace:*",
     "daisyui": "^3.0.3",
     "tailwind-scrollbar": "^3.0.4",
-    "wrangler": "^3.0.1"
+    "wrangler": "^3.1.0"
   }
 }
