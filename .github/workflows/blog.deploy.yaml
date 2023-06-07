@@ -2,14 +2,16 @@ name: 💫 Astro Build + Deploy to GitHub Pages 💫
 
 on:
   push:
-    branches: [ "production" ]
+    branches:
+      - production
     paths:
-      - "apps/web/blog.ueuie.dev/**/*"
-      - "!.eslintignore"
-      - "!.eslintcache"
-      - "!.eslintrc"
-      - "!.prettierignore"
-      - "!.prettierrc"
+      - '.github/workflows/blog.deploy.yaml'
+      - 'apps/web/blog.ueuie.dev/**'
+      - '!.eslintignore'
+      - '!.eslintcache'
+      - '!.eslintrc'
+      - '!.prettierignore'
+      - '!.prettierrc'
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
