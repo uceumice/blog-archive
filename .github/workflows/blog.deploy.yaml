@@ -5,11 +5,14 @@ on:
     branches:
       - production
     paths:
-      - './.github/workflows/blog.deploy.yaml'
       - './apps/web/blog.ueuie.dev/**'
   workflow_dispatch:
+    inputs:
+      rerun:
+        description: 'Rerun the Workflow'
+        default: 'false'
+        required: false
 
-# Allow this job to clone the repo and create a page deployment
 jobs:
   build:
     runs-on: windows-latest
