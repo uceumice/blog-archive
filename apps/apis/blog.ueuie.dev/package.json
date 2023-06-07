@@ -7,14 +7,14 @@
     "dev": "npm-run-all -s db.drizzle.generate db.apply.local -p dev.*",
     "dev.cf": "cross-env NODE_ENV=development wrangler dev src/worker.ts",
     "dev.ts": "tsup --watch",
-    "db.apply": "wrangler d1 migrations apply ueuie-blog-api",
-    "db.apply.local": "wrangler d1 migrations apply ueuie-blog-api --local",
+    "db.apply": "wrangler d1 migrations apply blog",
+    "db.apply.local": "wrangler d1 migrations apply blog --local",
     "db.drizzle.generate": "drizzle-kit generate:sqlite",
     "format": "prettier --write .",
     "eslint": "eslint --cache --ext . --report-unused-disable-directives src",
     "eslint.fix": "eslint --cache --ext . --fix --report-unused-disable-directives src",
     "deploy": "cross-env NODE_ENV=production wrangler deploy ./src/worker.ts",
-    "checks": "tsc --noEmit"
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",

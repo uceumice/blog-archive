@@ -1,5 +1,5 @@
-import { router } from "../trpc";
+import { t } from "@/server/trpc";
 import { add } from "./add";
 
 /* --------------------------------- router --------------------------------- */
-export const newsletter = router({ add });
+export const newsletter = t.router({ add });

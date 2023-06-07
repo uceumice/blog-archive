@@ -14,8 +14,9 @@ export function createContextFunction(req: Request, env: Env, ctx: ExecutionCont
   });
 
 
-  return async function cretaeContext() {
+  return async function createContext() {
     return {
+      req,
       env,
       ctx,
       orm: drizzle(env.D1, { schema }),

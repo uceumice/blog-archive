@@ -1,6 +1,6 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import { app } from './router/trpc';
 import { createContextFunction } from './context';
+import { router } from './router/router';
 
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
@@ -20,7 +20,7 @@ export default {
       }),
       batching: { enabled: true },
       req,
-      router: app,
+      router,
       endpoint: '/api/trpc',
       onError: ({ error }) => {
         console.error(error);

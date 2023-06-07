@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { procedure } from "../trpc";
+import { t } from "../../../server/trpc";
 import { sql } from "drizzle-orm";
 import { emails } from "@/server/data/schema";
 import { nanoid } from "nanoid";
@@ -21,7 +21,7 @@ const schema = {
 }
 
 /* ---------------------------------- logic --------------------------------- */
-export const add = procedure.input(schema.input).output(schema.output).mutation(
+export const add = t.procedure.input(schema.input).output(schema.output).mutation(
     async ({ input, ctx: { orm, fetch } }) => {
         // [1] check if email was already added
         const { exists } = await orm.get<{ exists: boolean }>(sql`SELECT EXISTS(SELECT 1 FROM ${emails} WHERE ${emails.email} = ${input.email}) as "exists"`);
