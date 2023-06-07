@@ -1,6 +1,6 @@
 {
     "name": "@uceumice/constants",
-    "main": "./dist/index.mjs",
+    "main": "./dist/index.cjs",
     "type": "module",
     "typings": "./dist/index.d.ts",
     "scripts": {
