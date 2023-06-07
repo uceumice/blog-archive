@@ -3,14 +3,16 @@ name: 💫 Wrangler Build + Deploy to Cloudflare 💫
 on:
   push:
     branches:
-      - "production"
+      - production
     paths:
-      - "/apps/apis/data.ueuie.dev/**/*"
+      - ".github/workflows/blog.api.deploy.yaml"
+      - "apps/apis/blog.ueuie.dev/**"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
       - "!.prettierignore"
       - "!.prettierrc"
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
