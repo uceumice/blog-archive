@@ -1,0 +1,39 @@
+---
+import { Solid } from './components/solid';
+import { getLabels } from '~/utils/i18n';
+import type { SolidProps } from './components/solid';
+import dayjs from 'dayjs';
+
+const latest = dayjs.utc().toDate();
+
+const labels = getLabels<SolidProps['labels']>(Astro, {
+    last_edited: {
+        en: 'LAST EDITED',
+        de: 'LETZTE ÄNDERUNGEN',
+        ua: 'ОСТАННІ ЗМІНИ',
+    },
+    // ----
+    now: {
+        en: 'NOW',
+        de: 'JETZT',
+        ua: 'ЩОЙНО',
+    },
+    days_ago: (d: number) => ({
+        en: `${d} days ago`,
+        de: `vor ${d} Tagen`,
+        ua: `${d === 1 ? 'день' : d > 1 && d < 5 ? `${d} дні` : `${d} днів`} тому`,
+    }),
+    hours_ago: (h: number) => ({
+        en: `${h === 1 ? 'an hour' : `${h} hours`} ago`,
+        de: `vor ${h === 1 ? '1 Stunde' : `${h} Stunden`}`,
+        ua: 'days ago',
+    }),
+    minutes_ago: (m: number) => ({
+        en: `${m === 1 ? 'a minute' : `${m} minutes`} ago`,
+        de: `vor ${m === 1 ? 'einer Minute' : `${m} Minuten`}`,
+        ua: '',
+    }),
+});
+---
+
+<Solid client:load latest={latest} labels={labels} />
