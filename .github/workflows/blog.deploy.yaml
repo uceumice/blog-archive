@@ -15,7 +15,7 @@ on:
 # Allow this job to clone the repo and create a page deployment
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     environment: execution
     permissions:
       contents: read
