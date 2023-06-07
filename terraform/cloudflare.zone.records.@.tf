@@ -20,6 +20,13 @@ resource "cloudflare_record" "sendgrid" {
   value           = var.cloudflare_sendgrid_ueuie_setup[count.index].value
 }
 
+resource "cloudflare_record" "github-pages" {
+  zone_id = cloudflare_zone.ueuie.id
+  # ----
+  type            = "CNAME"
+  name            = "blog"
+  value           = "uceumice.github.io"
+}
 
 module "simple-login-swetae" {
   source  = "uceumice/simple-login/cloudflare"
