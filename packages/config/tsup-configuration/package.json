@@ -1,0 +1,11 @@
+{
+    "name": "@uceumice/tsup",
+    "private": true,
+    "type": "module",
+    "files": [
+        "./package.mjs"
+    ],
+    "devDependencies": {
+        "tsup": "^6.7.0"
+    }
+}

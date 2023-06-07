@@ -1,5 +1,6 @@
 /* ----------------------------------- SSR ---------------------------------- */
 export const prerender = true;
+import {} from "astro:content"
 /* ----------------------------------- SSR ---------------------------------- */
 import { EnumChangefreq, SitemapStream, streamToPromise, type SitemapItem } from 'sitemap';
 import { getCollection } from 'astro:content';
@@ -14,7 +15,16 @@ export const get: APIRoute = async () => {
 
     /* -------------------------------- Overview -------------------------------- */
     sitemap.write({
-      url: '/',
+      url: '/en/news',
+      changefreq: EnumChangefreq.DAILY,
+      priority: 1.0,
+      img: [],
+      links: [],
+      video: [],
+    } satisfies SitemapItem);
+
+    sitemap.write({
+      url: '/ua/news',
       changefreq: EnumChangefreq.DAILY,
       priority: 1.0,
       img: [],
@@ -23,14 +33,14 @@ export const get: APIRoute = async () => {
     } satisfies SitemapItem);
 
     /* -------------------------------- RSS Feed -------------------------------- */
-    sitemap.write({
-      url: '/blog/rss.xml',
-      changefreq: EnumChangefreq.DAILY,
-      priority: 0.8,
-      img: [],
-      links: [],
-      video: [],
-    } satisfies SitemapItem);
+    // sitemap.write({
+    //   url: '/blog/rss.xml',
+    //   changefreq: EnumChangefreq.DAILY,
+    //   priority: 0.8,
+    //   img: [],
+    //   links: [],
+    //   video: [],
+    // } satisfies SitemapItem);
 
     /* ---------------------------------- Posts --------------------------------- */
     await getCollection('posts').then((entries) =>

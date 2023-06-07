@@ -1,0 +1,29 @@
+---
+import NewsletterSubscription from '~/components/forms/newsletter-submission/newsletter-subscription.astro';
+import { getLabels } from '~/utils/i18n';
+import { Logo } from '../shared/icons/logo';
+
+const labels = getLabels(Astro, {
+  msg_active_development: {
+    en: 'Hey, this page is currently undergoing active development.',
+    ua: 'Ця сторінка знаходиться в стадії активної розробки. Вкажи свою електронну адресу, якщо хочеш отримати повідомлення щодо статусу сторінки.',
+    de: 'Hey, diese Seite wird aktuell ausgebaut. Gib dein Email an, fallst du benachrichtigt werden willst, wenn die Seite live geht.',
+  }
+});
+---
+
+<div class:list={['p-8']}>
+  <main class:list={['flex flex-col items-stretch gap-8']}>
+    <div class:list={['max-w-md', 'flex flex-col items-stretch gap-4']}>
+      <div class:list={['p-4', 'border border-primary', 'sm:backdrop-blur-lg', 'max-sm:bg-base-100']}>
+        <p class:list={['text-sm font-bold text-justify']}>
+          {labels['msg_active_development']}
+        </p>
+        <div class:list={['w-full', 'pt-4', 'flex justify-between items-center gap-4']}>
+          <Logo class:list={['w-6 h-6']} />
+          <NewsletterSubscription />
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

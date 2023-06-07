@@ -1,33 +1,41 @@
 ---
-import Social from "./components/social.astro";
-import Legals from "./components/legals.astro";
+import Social from './components/social/index.astro';
+import Legals from './components/legals/index.astro';
+import BtnToggleLang from './components/btn-toggle-locale/index.astro';
+import BtnToggleTheme from './components/btn-toggle-theme/index.astro';
 ---
 
 <div
   id="footer"
   class:list={[
-    "w-full max-w-full",
-    "p-4",
-    "flex justify-between items-center gap-4",
-    "border-t border-t-primary-focus backdrop-blur-md",
-    "z-10",
+    "fixed",
+    "bottom-0",
+    'w-full max-w-full',
+    'px-4 py-2',
+    'flex justify-between items-center gap-4',
+    'border-t border-t-primary-focus backdrop-blur-md',
+    'z-10',
     // Mobile
-    "max-sm:flex-col",
+    'max-sm:flex-col',
   ]}
 >
   <div
     class:list={[
-      "w-full",
-      "flex justify-start",
+      'w-full',
+      'flex justify-start',
       // Mobile
-      "max-sm:w-full max-sm:justify-between ",
+      'max-sm:w-full max-sm:justify-between ',
     ]}
   >
-    <div class:list={["flex items-center gap-8"]}>
+    <div class:list={['flex items-center gap-8']}>
       <Social />
     </div>
   </div>
-  <div class:list={["w-full", "flex justify-end"]}>
+  <div class:list={['w-full', 'flex justify-end items-center gap-2']}>
     <Legals />
+    <div class="join">
+      <BtnToggleLang />
+      <BtnToggleTheme />
+    </div>
   </div>
 </div>

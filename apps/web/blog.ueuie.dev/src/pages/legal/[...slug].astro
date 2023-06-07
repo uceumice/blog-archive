@@ -1,25 +1,29 @@
 ---
-import { getLangSSR } from "../../utils/i18n";
-import { getLegalPage } from "../../utils/contents/get-legal-page";
-import Legal from "../../layouts/legal/legal.astro";
-import { setCanonical } from "../../utils/canonical";
+import type { Lang } from "~/utils/i18n"
+import { getCollection } from "astro:content";
 
-/* -------------------------------------------------------------------------- */
-/*                                     SSR                                    */
-/* -------------------------------------------------------------------------- */
-const slug = Astro.params.slug!;
-
-const page = await getLegalPage(getLangSSR(Astro), slug);
-
-if (!page) {
-  return Astro.redirect("/404");
+interface Params {
+  slug: string;
 }
-const { Content } = await page.render();
-
-/* --------------------------------- Headers -------------------------------- */
-setCanonical(Astro, "legal", slug);
+/* -------------------------------------------------------------------------- */
+/*                                Static Paths                                */
+/* -------------------------------------------------------------------------- */
+export async function getStaticPaths() {
+    const entries = await getCollection('legals');
+  
+    let results: { params: Params }[] = [];
+  
+    entries.forEach((entry) => {
+      const [, slug] = entry.slug.split('/') as [Lang, string];
+      results.push({ params: { slug: slug! } });
+    });
+  
+    return results;
+}
+/* ------------------------------------ . ----------------------------------- */
 ---
-
-<Legal data={page.data}>
-  <Content />
-</Legal>
+<body>
+    <script is:inline define:vars={{ href:  Astro.params.slug}}>
+      window.location.replace(`/en/legal/${href}`)
+    </script>
+</body>

@@ -1,23 +1,24 @@
 ---
-import { LastUpdatedString } from "../last-updated-string/updated";
-import { Logo } from "../shared/icons/logo";
+import LastUpdated from '../last-updated/last-updated.astro';
+import { Logo } from '../shared/icons/logo';
 ---
 
 <div
   id="header"
   class:list={[
-    "w-full max-w-full h-10",
-    "px-4 py-2",
-    "flex justify-between items-center",
-    "border-b border-b-primary",
-    "backdrop-blur-sm",
-    "z-10",
+    "fixed top-0",
+    'w-full max-w-full h-10',
+    'px-4 py-2',
+    'flex justify-between items-center',
+    'border-b border-b-primary',
+    'backdrop-blur-sm',
+    'z-10',
   ]}
 >
-  <a class:list={["w-fit h-fit"]} href="/">
-    <Logo class={["w-5 h-5"]} />
+  <a class:list={['w-fit h-fit']} href="/">
+    <Logo class={['w-5 h-5']} />
   </a>
-  <div class:list={["flex items-center gap-2", "text-xs"]}>
-    <LastUpdatedString client:load />
+  <div class:list={['flex items-center gap-2', 'text-xs']}>
+    <LastUpdated />
   </div>
 </div>

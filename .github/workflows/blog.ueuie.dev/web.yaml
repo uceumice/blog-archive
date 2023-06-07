@@ -1,0 +1,87 @@
+name: 💫 Astro Build + Deploy to GitHub Pages 💫
+
+on:
+  push:
+    branches:
+      - "production"
+    paths:
+      - "/apps/web/blog.ueuie.dev/**/*"
+      - "!.eslintignore"
+      - "!.eslintcache"
+      - "!.eslintrc"
+      - "!.prettierignore"
+      - "!.prettierrc"
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: execution
+    permissions:
+      contents: read
+      deployments: write
+    name: Build Astro Project
+
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v3
+
+      # ----
+      - name: ⎔ Setup pnpm
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: 💫 Include pnpm cache (store)
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
+        name: setup `pnpm` cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - uses: actions/cache@v3
+        name: setup `pnpm` cache
+        with:
+          path: ./apps/web/blog.ueuie.dev/dist
+          key: ${{ runner.os }}-astro-build-${{ hashFiles('dist') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-build-
+      # ----
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🖇 Build application
+        run: pnpm run build --filter @uceumice/blog.ueuie.dev
+
+      - name: 🏺 Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 🧸 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

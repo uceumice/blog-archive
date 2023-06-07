@@ -1,15 +1,13 @@
 import type { AstroGlobal } from 'astro';
-import type { RequestInit } from '@cloudflare/workers-types';
-import { PREFERED_LANGUAGE_KEY } from './constants/cookies';
+import { lang } from "@uceumice/constants";
 import { z } from 'zod';
 
-export const langs = ['en', 'ua'] as const;
-export type Lang = (typeof langs)[number];
+export type Lang = (typeof lang)[number];
 
 export const parse = {
   lang: (value: unknown) => {
     try {
-      return z.enum(langs).parse(value);
+      return z.enum(lang).parse(value);
     } catch (e) {
       return null;
     }
@@ -17,17 +15,37 @@ export const parse = {
 };
 
 // ----
-export function getLangSSR({ cookies, request }: AstroGlobal): Lang {
-  const country: Iso3166Alpha2Code | 'T1' | undefined = (request as RequestInit).cf?.country as Iso3166Alpha2Code | 'T1' | undefined;
+export function getLocale({  params }: AstroGlobal): Lang {
 
-  if (country) {
-    if (country === 'DE') {
-      return 'en';
-    }
-    if (country === 'UA') {
-      return 'ua';
-    }
+  let l: Lang | null = null;
+
+  /* ------------------------- choose by `parameters` ------------------------- */
+  if (params.lang) {
+    l = parse.lang(params.lang);
+    if (l) return l;
   }
 
-  return parse.lang(cookies.get(PREFERED_LANGUAGE_KEY).value) || 'en';
+  return lang[0];
 }
+
+
+// type Labels<L extends Record<string, string | ((...args: any[]) => string)>> = {
+//   [K in keyof L]: L[K] extends ((...args: any[]) => string)
+//   ? (...args: Parameters<L[K]>) => Record<Lang, string>
+//   : Record<Lang, string>;
+// };
+
+export const getLabels = function <T extends Record<string, string | ((...args: unknown[]) => string)>, D extends Record<string, Record<Lang, string> | ((...args: any[]) => Record<Lang, string>)> = Record<string, Record<Lang, string> | ((...args: any[]) => Record<Lang, string>)>>(astro: AstroGlobal, labels: D): T {
+  return Object.fromEntries(Object.entries<Record<Lang, string> | ((...args: unknown[]) => Record<Lang, string>)>(labels).map(([key, value]) => {
+    if (typeof value === "function") {
+      const getter = (...args: Parameters<typeof value>) => {
+        return value(...args)[getLocale(astro)];
+      }
+      return [key, getter];
+    } else {
+      return [key, value[getLocale(astro)]];
+    }
+  })) as T;
+}
+
+

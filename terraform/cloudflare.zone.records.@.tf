@@ -10,6 +10,17 @@ module "simple-login-ueuie" {
   zone_id = cloudflare_zone.ueuie.id
 }
 
+resource "cloudflare_record" "sendgrid" {
+  zone_id = cloudflare_zone.ueuie.id
+  # ----
+  count = length(var.cloudflare_sendgrid_ueuie_setup)
+  # ----
+  type            = "CNAME"
+  name            = var.cloudflare_sendgrid_ueuie_setup[count.index].name
+  value           = var.cloudflare_sendgrid_ueuie_setup[count.index].value
+}
+
+
 module "simple-login-swetae" {
   source  = "uceumice/simple-login/cloudflare"
   version = "0.0.2"

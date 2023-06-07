@@ -17,3 +17,8 @@ variable "cloudflare_alextocar_zone_id" {
   sensitive = true
   type      = string
 }
+
+variable "cloudflare_sendgrid_ueuie_setup" {
+  type      = list(object({ name = string, value = string }))
+  sensitive = true
+}

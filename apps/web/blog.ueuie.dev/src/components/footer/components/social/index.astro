@@ -1,0 +1,31 @@
+---
+import { GitHub, YouTube } from "./components/icons";
+
+const socials = [
+  {
+    Icon: GitHub,
+    href: "https://github.com/uceumice",
+  },
+  {
+    Icon: YouTube,
+    href: "https://youtube.com/@uceumice",
+  },
+];
+---
+
+<style>
+  .icon {
+    color: white;
+  }
+</style>
+<div class="flex gap-2">
+  {
+    socials.map(({ Icon, href }) => {
+      return (
+        <a class="btn btn-sm btn-square btn-ghost icon" href={href}>
+          <Icon class="w-5 h-5" />
+        </a>
+      );
+    })
+  }
+</div>

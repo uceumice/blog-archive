@@ -13,7 +13,8 @@ export function NewsletterSubscription() {
   });
 
   const onSubmit: SubmitHandler<NewsletterSubscription> = ({ email }) => {
-    trpc.newsletter.add.mutate({ email }).then(() => {
+    trpc.newsletter.add.mutate({ email }).then((value) => {
+      console.log({ value });
       localStorage.setItem('autofill.newsletter.email', email);
     });
   };

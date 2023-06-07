@@ -1,8 +1,5 @@
 ---
-import Meta from "../../components/meta/meta.astro";
-import Auto from "../../components/scripts/auto-pref.astro";
-import { getLangSSR } from "../../utils/i18n";
-import { getPrefSSR } from "../../utils/pref";
+import Head from '../../components/head/index.astro';
 
 interface Props {
   name: string;
@@ -11,25 +8,16 @@ interface Props {
 /* -------------------------------------------------------------------------- */
 /*                                     SSR                                    */
 /* -------------------------------------------------------------------------- */
-const pref = await getPrefSSR(Astro);
-const lang = getLangSSR(Astro) || Astro.props;
 ---
 
-<html lang={lang} dir={pref.dir} class="w-full h-full" data-theme={pref.theme}>
+<html class="w-full h-full">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
-    <Meta />
-    <Auto enable={!pref.theme} />
+    <Head />
     <title>{Astro.props.name} | UEUIE</title>
   </head>
-  <body
-    class:list={[
-      "w-full h-full",
-      "flex justify-center items-center",
-      "bg-base-100",
-    ]}
-  >
+  <body class:list={['w-full h-full', 'flex justify-center items-center', 'bg-base-100']}>
     <slot />
   </body>
 </html>
