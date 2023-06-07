@@ -5,13 +5,8 @@ on:
     branches:
       - production
     paths:
-      - '.github/workflows/blog.deploy.yaml'
-      - 'apps/web/blog.ueuie.dev/**'
-      - '!.eslintignore'
-      - '!.eslintcache'
-      - '!.eslintrc'
-      - '!.prettierignore'
-      - '!.prettierrc'
+      - './.github/workflows/blog.deploy.yaml'
+      - './apps/web/blog.ueuie.dev/**'
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
