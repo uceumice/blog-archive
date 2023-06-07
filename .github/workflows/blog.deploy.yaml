@@ -5,13 +5,14 @@ on:
     branches:
       - production
     paths:
-      - './apps/web/blog.ueuie.dev/**'
+      - ".github/workflows/blog.deploy.yaml"
+      - "apps/web/blog.ueuie.dev/**"
+      - "!.eslintignore"
+      - "!.eslintcache"
+      - "!.eslintrc"
+      - "!.prettierignore"
+      - "!.prettierrc"
   workflow_dispatch:
-    inputs:
-      rerun:
-        description: 'Rerun the Workflow'
-        default: 'false'
-        required: false
 
 jobs:
   build:
