@@ -2,8 +2,7 @@ name: 💫 Astro Build + Deploy to GitHub Pages 💫
 
 on:
   push:
-    branches:
-      - "production"
+    branches: [ "production" ]
     paths:
       - "!.eslintignore"
       - "!.eslintcache"
