@@ -5,7 +5,7 @@ on:
     branches:
       - production
     paths:
-      - ".github/workflows/blog.api.db.migrate.yaml"
+      - ".github/workflows/blog.api.migrate.yaml"
       - "apps/apis/blog.ueuie.dev/drizzle/**"
       - "!.eslintignore"
       - "!.eslintcache"
