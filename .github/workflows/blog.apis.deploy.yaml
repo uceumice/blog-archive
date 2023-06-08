@@ -54,8 +54,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       # ----
       - name: 📥 Install dependencies
-        run: pnpm i --filter @uceumice/blog.ueuie.dev.api
-
+        run: pnpm install
       # ----
       - name: 🧸 Deploy to Cloudflare
         run: pnpm run deploy

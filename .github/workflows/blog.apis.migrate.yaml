@@ -54,7 +54,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       # ----
       - name: 📥 Install dependencies
-        run: pnpm i --filter @uceumice/blog.ueuie.dev.api
+        run: pnpm install
 
       - name: 〰 Apply Migrations
         run: pnpm run db.apply
