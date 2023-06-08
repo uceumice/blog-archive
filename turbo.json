@@ -16,7 +16,7 @@
     "lint": {},
     "deploy": {
       "dependsOn": [
-        "^deploy"
+        "^build"
       ]
     },
     "dev": {
