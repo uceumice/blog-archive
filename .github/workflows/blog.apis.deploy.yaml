@@ -56,9 +56,6 @@ jobs:
       - name: 📥 Install dependencies
         run: pnpm i --filter @uceumice/blog.ueuie.dev.api
 
-      - name: 🖇 Build application
-        run: turbo run build --filter @uceumice/blog.ueuie.dev.api
-
       # ----
       - name: 🧸 Deploy to Cloudflare
         run: pnpm run deploy
