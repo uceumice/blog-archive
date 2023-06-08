@@ -82,7 +82,7 @@ importers:
       '@tanstack/solid-query': ^4.29.11
       '@trpc/client': ^10.29.1
       '@trpc/server': ^10.29.1
-      '@uceumice/blog.ueuie.dev-apis': workspace:*
+      '@uceumice/blog.ueuie.dev.api': workspace:*
       '@uceumice/constants': workspace:*
       '@uceumice/prettier-config': workspace:*
       astro: ^2.6.1
@@ -121,7 +121,7 @@ importers:
     devDependencies:
       '@cloudflare/workers-types': 4.20230518.0
       '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.2
-      '@uceumice/blog.ueuie.dev-apis': link:../../apis/blog.ueuie.dev
+      '@uceumice/blog.ueuie.dev.api': link:../../apis/blog.ueuie.dev
       '@uceumice/prettier-config': link:../../../packages/config/prettier-config
       daisyui: 3.0.3_postcss@8.4.24
       tailwind-scrollbar: 3.0.4_tailwindcss@3.3.2
@@ -3835,7 +3835,7 @@ packages:
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.41.0
-      eslint-plugin-import: 2.27.5_w6joeaz4pb46sjt54b6a4bjlz4
+      eslint-plugin-import: 2.27.5_eslint@8.41.0
       object.assign: 4.1.4
       object.entries: 1.1.6
       semver: 6.3.0
