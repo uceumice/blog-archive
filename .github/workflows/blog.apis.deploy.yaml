@@ -8,6 +8,7 @@ on:
       - ".github/workflows/blog.api.deploy.yaml"
       - "apps/apis/blog.ueuie.dev/**"
       - "pnpm-lock.yaml"
+      - "package.json"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
