@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "eslint": "eslint --cache --ext . --report-unused-disable-directives src",
     "eslint.fix": "eslint --cache --ext . --fix --report-unused-disable-directives src",
-    "deploy": "cross-env NODE_ENV=production wrangler deploy ./src/worker.ts"
+    "deploy": "cross-env NODE_ENV=production NO_D1_WARNING=true wrangler deploy ./src/worker.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
