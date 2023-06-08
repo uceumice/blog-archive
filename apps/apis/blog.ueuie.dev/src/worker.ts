@@ -7,6 +7,7 @@ export default {
     return fetchRequestHandler({
       responseMeta: () => ({
         headers:
+          // @ts-ignore
           process.env.NODE_ENV === 'development'
             ? {
               'Access-Control-Allow-Origin': 'blog.',
@@ -14,6 +15,7 @@ export default {
               'Access-Control-Allow-Headers': '*',
               'Access-Control-Max-Age': '*',
               'Access-Control-Allow-Credentials': 'true',
+              // @ts-ignore
             } : process.env.NODE_ENV === 'production' ? {
               'Access-Control-Allow-Origin': 'https://blog.ueuie.dev',
               'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE',
