@@ -56,9 +56,9 @@ jobs:
       # ----
       - name: 📥 Install dependencies
         run: pnpm install
+        
       # ----
       - name: 🧸 Deploy to Cloudflare
-        run: pnpm run deploy
-        working-directory: "./apps/apis/blog.ueuie.dev"
+        run: pnpm run deploy --filter @uceumice/blog.ueuie.dev.api
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
