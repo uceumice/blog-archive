@@ -1,4 +1,4 @@
-name: 💫 Wrangler Build + Deploy to Cloudflare 💫
+name: "🧩 Blog: Build Workers APIs and deploy to Cloudfalre Workers ☁︎⋅"
 
 on:
   push:

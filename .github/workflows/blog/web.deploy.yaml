@@ -1,4 +1,4 @@
-name: 💫 Astro Build + Deploy to GitHub Pages 💫
+name: "🗐 Blog: Build static Astro site and deploy to GitHub Pages ᓚᘏᗢ"
 
 on:
   push:
