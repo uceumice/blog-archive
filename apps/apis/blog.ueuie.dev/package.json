@@ -1,5 +1,5 @@
 {
-  "name": "@uceumice/blog.ueuie.dev-apis",
+  "name": "@uceumice/blog.ueuie.dev.api",
   "private": true,
   "typings": "./dist.type/router.d.ts",
   "main": "./src/worker.ts",
@@ -7,6 +7,8 @@
     "dev": "npm-run-all -s db.drizzle.generate db.apply.local -p dev.*",
     "dev.cf": "cross-env NODE_ENV=development wrangler dev src/worker.ts",
     "dev.ts": "tsup --watch",
+    "check": "tsc --noEmit",
+    "build": "run-p build.*",
     "build.ts": "tsup",
     "db.apply": "wrangler d1 migrations apply blog",
     "db.apply.local": "wrangler d1 migrations apply blog --local",
@@ -14,8 +16,7 @@
     "format": "prettier --write .",
     "eslint": "eslint --cache --ext . --report-unused-disable-directives src",
     "eslint.fix": "eslint --cache --ext . --fix --report-unused-disable-directives src",
-    "deploy": "cross-env NODE_ENV=production wrangler deploy ./src/worker.ts",
-    "check": "tsc --noEmit"
+    "deploy": "cross-env NODE_ENV=production wrangler deploy ./src/worker.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
@@ -32,6 +33,7 @@
     "@trpc-limiter/core": "^0.0.8",
     "@trpc/server": "^10.29.1",
     "@uceumice/constants": "workspace:*",
+    "@uceumice/root": "workspace:*",
     "cors": "^2.8.5",
     "dayjs": "^1.11.8",
     "nanoid": "^4.0.2",
