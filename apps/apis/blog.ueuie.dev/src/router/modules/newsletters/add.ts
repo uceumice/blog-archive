@@ -30,7 +30,7 @@ export const add = t.procedure.input(schema.input).output(schema.output).mutatio
         }
 
         // [1] insert the email into the list (include timestamp and id that would be used to remove the email from the list)
-        const inserted = await orm.insert(emails).values({ id: nanoid(), email: input.email, timestamp: dayjs.utc().toDate() }).run();
+        const inserted = await orm.insert(emails).values({ email: input.email, token: nanoid(), timestamp: dayjs.utc().toDate() }).run();
         if (!inserted.success) {
             return false;
         }
