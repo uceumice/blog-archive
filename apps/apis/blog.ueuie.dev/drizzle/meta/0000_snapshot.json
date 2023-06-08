@@ -1,27 +1,55 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "82b8f7f2-913a-45cb-bb13-3b17256f7efe",
+  "id": "fd1d7f55-cd8e-4bcb-ab36-294ee713c054",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "emails": {
       "name": "emails",
       "columns": {
-        "address": {
-          "name": "address",
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
           "type": "text(320)",
           "primaryKey": false,
           "notNull": true
         },
-        "addedat": {
-          "name": "addedat",
+        "token": {
+          "name": "token",
+          "type": "text(21)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "idx_unique_token": {
+          "name": "idx_unique_token",
+          "columns": [
+            "token"
+          ],
+          "isUnique": true
+        },
+        "idx_unique_email": {
+          "name": "idx_unique_email",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {}
     }

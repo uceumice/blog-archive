@@ -1,21 +1,62 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "91202943-33ea-462c-ab74-d6e230f16612",
-  "prevId": "82b8f7f2-913a-45cb-bb13-3b17256f7efe",
+  "id": "e5b724da-1fbf-4a83-9996-75ebde491dd8",
+  "prevId": "fd1d7f55-cd8e-4bcb-ab36-294ee713c054",
   "tables": {
-    "emails": {
-      "name": "emails",
+    "access.access": {
+      "name": "access.access",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ipid": {
+          "name": "ipid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "timestamp": {
           "name": "timestamp",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "access.access_ipid_access.ips_id_fk": {
+          "name": "access.access_ipid_access.ips_id_fk",
+          "tableFrom": "access.access",
+          "tableTo": "access.ips",
+          "columnsFrom": [
+            "ipid"
+          ],
+          "columnsTo": [
+            "id"
+          ]
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "emails": {
+      "name": "emails",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
         },
-        "address": {
-          "name": "address",
+        "email": {
+          "name": "email",
           "type": "text(320)",
           "primaryKey": false,
           "notNull": true
@@ -25,9 +66,66 @@
           "type": "text(21)",
           "primaryKey": false,
           "notNull": true
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "idx_unique_token": {
+          "name": "idx_unique_token",
+          "columns": [
+            "token"
+          ],
+          "isUnique": true
+        },
+        "idx_unique_email": {
+          "name": "idx_unique_email",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "access.ips": {
+      "name": "access.ips",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ip": {
+          "name": "ip",
+          "type": "text(45)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "idx_unique_ip": {
+          "name": "idx_unique_ip",
+          "columns": [
+            "ip"
+          ],
+          "isUnique": true
+        }
+      },
       "foreignKeys": {},
       "compositePrimaryKeys": {}
     }
@@ -36,8 +134,6 @@
   "_meta": {
     "schemas": {},
     "tables": {},
-    "columns": {
-      "\"emails\".\"addedat\"": "\"emails\".\"timestamp\""
-    }
+    "columns": {}
   }
 }

@@ -2,10 +2,11 @@ name = "blog"
 main = "src/worker.ts"
 compatibility_date = "2023-06-02"
 
+routes = [{ pattern = "blog.ueuie.dev/api/*", zone_name = "ueuie.dev" }]
 
 [[d1_databases]]
-binding = "D1"                                       # i.e. available in your Worker on env.DB
+binding = "D1"
 database_name = "blog"
-database_id = "0f579a5b-6481-4eee-bcea-fbaad36923b3"
+database_id = "ede788c4-771d-410a-9130-4fefd3788ab5"
 migrations_dir = "./drizzle"
 migrations_table = "__drizzle_migrations"
