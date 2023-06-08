@@ -42,6 +42,7 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          
       - uses: actions/cache@v3
         name: setup `pnpm` cache
         with:
@@ -49,8 +50,9 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
+
       - uses: actions/cache@v3
-        name: setup `pnpm` cache
+        name: setup `build` cache
         with:
           path: ./apps/web/blog.ueuie.dev/dist
           key: ${{ runner.os }}-astro-build-${{ hashFiles('dist') }}
