@@ -1,5 +1,5 @@
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
-import type { Router } from '@uceumice/blog.ueuie.dev-apis';
+import type { Router } from '@uceumice/blog.ueuie.dev.api';
 
 export const trpc = createTRPCProxyClient<Router>({
   links: [

@@ -41,7 +41,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230518.0",
     "@tailwindcss/typography": "^0.5.9",
-    "@uceumice/blog.ueuie.dev-apis": "workspace:*",
+    "@uceumice/blog.ueuie.dev.api": "workspace:*",
     "@uceumice/prettier-config": "workspace:*",
     "daisyui": "^3.0.3",
     "tailwind-scrollbar": "^3.0.4",
