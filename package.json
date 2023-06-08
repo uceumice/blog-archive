@@ -16,7 +16,7 @@
     "prettier": "^2.5.1",
     "turbo": "^1.9.9"
   },
-  "packageManager": "pnpm@7.15.0",
+  "packageManager": "pnpm@7.16.0",
   "name": "ueuie",
   "dependencies": {
     "drizzle-orm": "^0.26.5"
