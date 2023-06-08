@@ -23,6 +23,7 @@ jobs:
       cancel-in-progress: true
     permissions:
       contents: read
+      deployments: write
     name: 🧩 Migrate D1 - Drizzle Migrations
     steps:
       - name: ⬇️ Checkout
