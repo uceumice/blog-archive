@@ -23,9 +23,10 @@ resource "cloudflare_record" "sendgrid" {
 resource "cloudflare_record" "github-pages" {
   zone_id = cloudflare_zone.ueuie.id
   # ----
-  type  = "CNAME"
-  name  = "blog"
-  value = "uceumice.github.io"
+  type    = "CNAME"
+  name    = "blog"
+  value   = "uceumice.github.io"
+  proxied = true
 }
 
 module "simple-login-swetae" {
