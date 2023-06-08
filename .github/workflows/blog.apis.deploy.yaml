@@ -1,12 +1,12 @@
-name: "🗐 Blog: Build static Astro site and deploy to GitHub Pages ᓚᘏᗢ"
+name: "🧩 Blog: Build Workers APIs and deploy to Cloudfalre Workers ☁︎⋅"
 
 on:
   push:
     branches:
       - production
     paths:
-      - ".github/workflows/blog.deploy.yaml"
-      - "apps/web/blog.ueuie.dev/**"
+      - ".github/workflows/blog.api.deploy.yaml"
+      - "apps/apis/blog.ueuie.dev/**"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
@@ -15,18 +15,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
+  deploy:
+    runs-on: ubuntu-latest
     environment: execution
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.job }}
+      cancel-in-progress: true
     permissions:
       contents: read
       deployments: write
-    name: Build Astro Project
-
+    name: 🧩 Deploy Worker
     steps:
-      - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.11.0
-
       - name: ⬇️ Checkout
         uses: actions/checkout@v3
 
@@ -53,35 +52,16 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - uses: actions/cache@v3
-        name: setup `pnpm` cache
-        with:
-          path: ./apps/web/blog.ueuie.dev/dist
-          key: ${{ runner.os }}-astro-build-${{ hashFiles('dist') }}
-          restore-keys: |
-            ${{ runner.os }}-astro-build-
       # ----
       - name: 📥 Install dependencies
-        run: pnpm install
+        run: pnpm i --filter @uceumice/blog.ueuie.dev.api
 
       - name: 🖇 Build application
-        run: pnpm run build --filter @uceumice/blog.ueuie.dev
+        run: turbo run build --filter @uceumice/blog.ueuie.dev.api
 
-      - name: 🏺 Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./apps/web/blog.ueuie.dev/dist
-
-  deploy:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: 🧸 Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      # ----
+      - name: 🧸 Deploy to Cloudflare
+        run: pnpm run deploy
+        working-directory: "./apps/apis/blog.ueuie.dev"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
