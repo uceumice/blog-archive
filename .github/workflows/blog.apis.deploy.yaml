@@ -9,6 +9,7 @@ on:
       - "apps/apis/blog.ueuie.dev/**"
       - "pnpm-lock.yaml"
       - "package.json"
+      - "turbo.json"
       - "!.eslintignore"
       - "!.eslintcache"
       - "!.eslintrc"
