@@ -1,6 +1,5 @@
 {
   "name": "@uceumice/root",
-
   "private": true,
   "scripts": {
     "deploy": "turbo run deploy",
