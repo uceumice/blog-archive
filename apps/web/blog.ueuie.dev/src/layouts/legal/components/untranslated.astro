@@ -1,26 +1,17 @@
 ---
-import { getLabels } from "~/utils/i18n";
+import { getLabels } from '~/utils/i18n';
 
 const labels = getLabels(Astro, {
   untranslated: {
-    en: "Not translated yet...",
-    ua: "Поки що без перекладу...",
-    de: "Gerade noch nicht übersetzt...",
+    en: 'Not translated yet...',
+    ua: 'Поки що без перекладу...',
+    de: 'Gerade noch nicht übersetzt...',
   },
 });
 ---
 
-<span
-  class:list={["tooltip tooltip-bottom", "z-[2000]"]}
-  data-tip={labels["untranslated"]}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="32"
-    height="32"
-    viewBox="0 0 15 15"
-    class:list={["w-5 h-5"]}
-  >
+<span class:list={['tooltip tooltip-bottom', 'z-[2000]']} data-tip={labels['untranslated']}>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 15 15" class:list={['w-5 h-5']}>
     <path
       fill="currentColor"
       fill-rule="evenodd"

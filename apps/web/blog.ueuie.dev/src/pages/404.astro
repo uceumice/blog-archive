@@ -1,5 +1,5 @@
 ---
-import Infras from "../layouts/infras/infras.astro";
+import Infras from '../layouts/infras/infras.astro';
 ---
 
 <script src="../components/other/script-2d-anim.ts"></script>
@@ -13,38 +13,29 @@ import Infras from "../layouts/infras/infras.astro";
   }
 </style>
 <Infras name="Not Found">
-  <div
-    class:list={[
-      "w-full h-full",
-      "flex flex-col justify-center items-center gap-4",
-    ]}
-  >
+  <div class:list={['w-full h-full', 'flex flex-col justify-center items-center gap-4']}>
     <div
       class:list={[
-        "aspect-square",
-        "p-10",
-        "flex justify-center items-center",
+        'aspect-square',
+        'p-10',
+        'flex justify-center items-center',
 
-        "backdrop-blur-xl",
-        "text-4xl font-thin tracking-widest uppercase",
-        "rounded-full",
-        "border border-primary",
+        'backdrop-blur-xl',
+        'text-4xl font-thin tracking-widest uppercase',
+        'rounded-full',
+        'border border-primary',
 
-        "overflow-hidden",
+        'overflow-hidden',
         // Mobile
-        "max-sm:bg-base-100",
+        'max-sm:bg-base-100',
       ]}
     >
-      <canvas id="canvas-overlay" class:list={["canvas-overlay"]}></canvas>
+      <canvas id="canvas-overlay" class:list={['canvas-overlay']}></canvas>
 
-      <div
-        class="w-full h-full p-4 z-20 flex flex-col justify-center items-center rounded-full bg-base-100 border border-primary"
-      >
+      <div class="w-full h-full p-4 z-20 flex flex-col justify-center items-center rounded-full bg-base-100 border border-primary">
         Not Found
       </div>
     </div>
-    <a class="btn btn-sm btn-outline btn-primary" onclick="history.go(-1)"
-      >go back</a
-    >
+    <a class="btn btn-sm btn-outline btn-primary" onclick="history.go(-1)">go back</a>
   </div>
 </Infras>

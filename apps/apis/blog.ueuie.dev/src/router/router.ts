@@ -1,4 +1,4 @@
-import { t } from "../server/trpc";
+import { t } from '../server/trpc';
 import { newsletter } from './modules/newsletters/router';
 import { information } from './modules/information/router';
 

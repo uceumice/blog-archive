@@ -11,7 +11,7 @@
     "preview": "run-s preview.astro preview.worker",
     "preview.astro": "astro build",
     "preview.worker": "wrangler pages dev ./dist --compatibility-date=2023-05-31",
-    "format": "prettier --write .",
+    "format": "prettier --write ./**/*.{ts,md,mdx,astro}",
     "eslint": "eslint --cache --ext .",
     "eslint.fix": "eslint --cache --ext . --fix"
   },

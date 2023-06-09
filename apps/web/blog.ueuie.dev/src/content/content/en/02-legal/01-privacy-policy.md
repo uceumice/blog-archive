@@ -1,6 +1,6 @@
 ---
-type: "docs"
-date: 
+type: 'docs'
+date:
   updated: 2023-06-09T05:21:09Z
   written: 2023-06-01T02:19:09Z
 # ----

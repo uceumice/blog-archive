@@ -140,6 +140,9 @@ importers:
   packages/config/prettier-config:
     specifiers:
       prettier: ^2.8.8
+      prettier-plugin-astro: ^0.10.0
+    dependencies:
+      prettier-plugin-astro: 0.10.0
     devDependencies:
       prettier: 2.8.8
 
@@ -7832,6 +7835,15 @@ packages:
     dependencies:
       fast-diff: 1.3.0
     dev: true
+
+  /prettier-plugin-astro/0.10.0:
+    resolution: {integrity: sha512-dPzop0gKZyVGpTDQmfy+e7FKXC9JT3mlpfYA2diOVz+Ui+QR1U4G/s+OesKl2Hib2JJOtAYJs/l+ovgT0ljlFA==}
+    engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
+    dependencies:
+      '@astrojs/compiler': 1.5.1
+      prettier: 2.8.8
+      sass-formatter: 0.7.6
+    dev: false
 
   /prettier-plugin-astro/0.9.1:
     resolution: {integrity: sha512-pYZXSbdq0eElvzoIMArzv1SBn1NUXzopjlcnt6Ql8VW32PjC12NovwBjXJ6rh8qQLi7vF8jNqAbraKW03UPfag==}

@@ -4,6 +4,6 @@ module.exports = {
 
   plugins: [require('@tailwindcss/typography'), require('tailwind-scrollbar'), require('daisyui')],
   daisyui: {
-    themes: ["black", "light"],
+    themes: ['black', 'light'],
   },
 };

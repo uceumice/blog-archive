@@ -10,19 +10,22 @@ export default {
           // @ts-ignore
           process.env.NODE_ENV === 'development'
             ? {
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Methods': '*',
-              'Access-Control-Allow-Headers': '*',
-              'Access-Control-Max-Age': '*',
-              'Access-Control-Allow-Credentials': 'true',
-              // @ts-ignore
-            } : process.env.NODE_ENV === 'production' ? {
-              'Access-Control-Allow-Origin': 'https://blog.ueuie.dev',
-              'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE',
-              'Access-Control-Allow-Headers': 'Content-Type, Accept',
-              'Access-Control-Max-Age': '3600',
-              'Access-Control-Allow-Credentials': 'false',
-            } : undefined,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Max-Age': '*',
+                'Access-Control-Allow-Credentials': 'true',
+                // @ts-ignore
+              }
+            : process.env.NODE_ENV === 'production'
+            ? {
+                'Access-Control-Allow-Origin': 'https://blog.ueuie.dev',
+                'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE',
+                'Access-Control-Allow-Headers': 'Content-Type, Accept',
+                'Access-Control-Max-Age': '3600',
+                'Access-Control-Allow-Credentials': 'false',
+              }
+            : undefined,
         status: 200,
       }),
       batching: { enabled: true },

@@ -1,7 +1,14 @@
 {
     "name": "@uceumice/prettier-config",
     "main": "./config.js",
+    "files": [
+        "./config.js",
+        "./astro.js"
+    ],
     "devDependencies": {
         "prettier": "^2.8.8"
+    },
+    "dependencies": {
+        "prettier-plugin-astro": "^0.10.0"
     }
 }

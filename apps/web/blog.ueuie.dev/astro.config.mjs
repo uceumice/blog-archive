@@ -11,5 +11,5 @@ import solidJs from '@astrojs/solid-js';
 export default defineConfig({
   site: 'https://blog.ueuie.dev',
   integrations: [mdx(), tailwind(), partytown(), prefetch(), solidJs()],
-  output: 'static'
+  output: 'static',
 });

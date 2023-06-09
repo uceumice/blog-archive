@@ -1,8 +1,8 @@
-import { t } from "@/server/trpc";
+import { t } from '@/server/trpc';
 
 /* --------------------------------- router --------------------------------- */
 export const information = t.router({
-    locale: t.procedure.query(({ ctx: { req } }) => {
-        return req.cf
-    })
+  locale: t.procedure.query(({ ctx: { req } }) => {
+    return req.cf;
+  }),
 });

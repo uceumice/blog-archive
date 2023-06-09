@@ -12,7 +12,7 @@ export const base = z.object({
   date: z.object({
     written: z.date(),
     updated: z.date(),
-  })
+  }),
 });
 
 export const legal = base.extend({
@@ -30,7 +30,7 @@ export const posts = base.extend({
 export const author = z.object({
   id: z.string(),
   date: z.object({
-    joined: z.coerce.date()
+    joined: z.coerce.date(),
   }),
   languages: z
     .array(z.enum(lang))
@@ -50,7 +50,7 @@ const authors = defineCollection({
 
 const content = defineCollection({
   type: 'content',
-  schema: z.discriminatedUnion("type", [legal, posts]),
+  schema: z.discriminatedUnion('type', [legal, posts]),
 });
 
 export const collections = { authors, content };

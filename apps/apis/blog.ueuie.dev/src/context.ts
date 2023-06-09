@@ -5,14 +5,13 @@ import { $fetch } from 'ohmyfetch';
 // ----
 export function createContextFunction(req: Request, env: Env, ctx: ExecutionContext) {
   const sendgrid = $fetch.create({
-    baseURL: "https://api.sendgrid.com/v3",
+    baseURL: 'https://api.sendgrid.com/v3',
     headers: {
-      "Authorization": `Bearer ${env.SENDGRID_API_KEY}`,
-      "Content-Type": "application/json"
+      Authorization: `Bearer ${env.SENDGRID_API_KEY}`,
+      'Content-Type': 'application/json',
     },
-    method: "POST"
+    method: 'POST',
   });
-
 
   return async function createContext() {
     return {
@@ -21,8 +20,8 @@ export function createContextFunction(req: Request, env: Env, ctx: ExecutionCont
       ctx,
       orm: drizzle(env.D1, { schema }),
       fetch: {
-        sendgrid
-      }
+        sendgrid,
+      },
     };
   };
 }

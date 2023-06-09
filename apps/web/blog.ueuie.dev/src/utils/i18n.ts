@@ -10,7 +10,7 @@ export function parseLocale(value: unknown) {
   } catch (e) {
     return null;
   }
-};
+}
 
 // ----
 export function getLocale({ params }: AstroGlobal): Locale {

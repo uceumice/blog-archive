@@ -6,73 +6,73 @@ import type { Locale } from '~/utils/i18n';
 import Legal from '../../../layouts/legal/index.astro';
 
 type Params = {
-    section: Section;
-    locale: Locale;
-    slug: string;
+  section: Section;
+  locale: Locale;
+  slug: string;
 };
 
 type Props = {
-    entry: CollectionEntry<'content'>;
-    flags: {
-        untranslated: boolean;
-    };
+  entry: CollectionEntry<'content'>;
+  flags: {
+    untranslated: boolean;
+  };
 };
 
 /* -------------------------------------------------------------------------- */
 /*                                Static Paths                                */
 /* -------------------------------------------------------------------------- */
 export async function getStaticPaths() {
-    const entries = await getCollection('content');
+  const entries = await getCollection('content');
 
-    const returns: { params: Params; props: Props }[] = [];
+  const returns: { params: Params; props: Props }[] = [];
 
-    entries.forEach((entry) => {
-        const [entryLocale, { section }, { slug }] = parseContentCollectionSlug(entry.slug);
+  entries.forEach((entry) => {
+    const [entryLocale, { section }, { slug }] = parseContentCollectionSlug(entry.slug);
 
-        const found = returns.find((result) => result.params.locale === entryLocale && result.params.slug === slug);
-        if (!!found) {
-            found.props.entry = entry;
-            found.props.flags.untranslated = false;
-        } else {
-            locales.forEach((locale) => {
-                returns.push({
-                    params: {
-                        section,
-                        locale,
-                        slug,
-                    },
-                    props: {
-                        entry,
-                        flags: {
-                            untranslated: entryLocale !== locale,
-                        },
-                    },
-                });
-            });
-        }
-    });
+    const found = returns.find((result) => result.params.locale === entryLocale && result.params.slug === slug);
+    if (!!found) {
+      found.props.entry = entry;
+      found.props.flags.untranslated = false;
+    } else {
+      locales.forEach((locale) => {
+        returns.push({
+          params: {
+            section,
+            locale,
+            slug,
+          },
+          props: {
+            entry,
+            flags: {
+              untranslated: entryLocale !== locale,
+            },
+          },
+        });
+      });
+    }
+  });
 
-    return returns;
+  return returns;
 }
 
 /* ------------------------------------ - ----------------------------------- */
 const { section } = Astro.params as Params;
 const {
-    entry: {
-        data: { title },
-        render,
-    },
-    flags,
+  entry: {
+    data: { title },
+    render,
+  },
+  flags,
 } = Astro.props;
 const { Content } = await render();
 ---
 
 {
-    section === 'legal' ? (
-        <Legal title={title} flags={{ untranslated: flags.untranslated }}>
-            <Content />
-        </Legal>
-    ) : (
-        <Content />
-    )
+  section === 'legal' ? (
+    <Legal title={title} flags={{ untranslated: flags.untranslated }}>
+      <Content />
+    </Legal>
+  ) : (
+    <Content />
+  )
 }

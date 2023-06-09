@@ -1,9 +1,9 @@
 ---
-import RunningPathings from "~/components/background/running-pathings/running-pathings.astro";
-import Footer from "~/components/footer/footer.astro";
-import Header from "~/components/header/header.astro";
-import Head from "~/components/head/index.astro";
-import type { Locale } from "~/utils/i18n";
+import RunningPathings from '~/components/background/running-pathings/running-pathings.astro';
+import Footer from '~/components/footer/footer.astro';
+import Header from '~/components/header/header.astro';
+import Head from '~/components/head/index.astro';
+import type { Locale } from '~/utils/i18n';
 
 interface Props {
   locale: Locale;
@@ -17,11 +17,11 @@ const { locale } = Astro.props;
     <Head />
     <title>UEUIE</title>
   </head>
-  <body class:list={["w-full h-full", "flex flex-col items-stretch"]}>
+  <body class:list={['w-full h-full', 'flex flex-col items-stretch']}>
     <RunningPathings />
     <!--  -->
     <Header />
-    <div class:list={["w-full h-full", "flex justify-center items-center"]}>
+    <div class:list={['w-full h-full', 'flex justify-center items-center']}>
       <slot />
     </div>
     <Footer />
