@@ -1,29 +1,36 @@
 ---
-import type { Lang } from "~/utils/i18n"
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
+import { parseContentCollectionSlug } from '~/utils/contents/parse-collection-slug';
 
-interface Params {
+type Params = {
   slug: string;
-}
+};
+
 /* -------------------------------------------------------------------------- */
 /*                                Static Paths                                */
 /* -------------------------------------------------------------------------- */
 export async function getStaticPaths() {
-    const entries = await getCollection('legals');
-  
-    let results: { params: Params }[] = [];
-  
-    entries.forEach((entry) => {
-      const [, slug] = entry.slug.split('/') as [Lang, string];
-      results.push({ params: { slug: slug! } });
-    });
-  
-    return results;
+  const entries = await getCollection('content', (entry) => {
+    const [, { section }] = parseContentCollectionSlug(entry.slug);
+    return section === 'legal';
+  });
+
+  const returns: { params: Params }[] = [];
+
+  entries.forEach((entry) => {
+    const [, , { slug }] = parseContentCollectionSlug(entry.slug);
+    returns.push({ params: { slug } });
+  });
+
+  return returns;
 }
-/* ------------------------------------ . ----------------------------------- */
+
+/* ------------------------------------ - ----------------------------------- */
+const { slug } = Astro.params as Params;
 ---
+
 <body>
-    <script is:inline define:vars={{ href:  Astro.params.slug}}>
-      window.location.replace(`/en/legal/${href}`)
-    </script>
+  <script is:inline define:vars={{ slug: slug }}>
+    window.location.replace(`/en/legal/${slug}`);
+  </script>
 </body>

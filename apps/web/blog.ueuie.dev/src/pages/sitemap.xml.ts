@@ -1,6 +1,6 @@
 /* ----------------------------------- SSR ---------------------------------- */
 export const prerender = true;
-import {} from "astro:content"
+import {} from 'astro:content';
 /* ----------------------------------- SSR ---------------------------------- */
 import { EnumChangefreq, SitemapStream, streamToPromise, type SitemapItem } from 'sitemap';
 import { getCollection } from 'astro:content';

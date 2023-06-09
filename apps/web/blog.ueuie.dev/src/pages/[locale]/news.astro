@@ -1,0 +1,23 @@
+---
+import Start from '~/layouts/start/index.astro';
+import Maintenance from '~/components/maintenance/index.astro';
+import { Locale, locales } from '~/utils/i18n';
+
+type Params = {
+  locale: Locale;
+};
+/* -------------------------------------------------------------------------- */
+/*                                Static Paths                                */
+/* -------------------------------------------------------------------------- */
+export async function getStaticPaths() {
+  return locales.map((locale) => ({
+    params: { locale },
+  })) satisfies { params: Params }[];
+}
+/* ------------------------------------ - ----------------------------------- */
+const { locale } = Astro.params as Params;
+---
+
+<Start locale={locale}>
+  <Maintenance />
+</Start>

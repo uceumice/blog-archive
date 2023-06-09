@@ -1,5 +1,5 @@
 ---
-import { getLabels } from '~/utils/i18n';
+import { getLabels, getLocale } from '~/utils/i18n';
 const labels = getLabels(Astro, {
   privacy_policy: {
     en: 'Privacy Policy',
@@ -13,12 +13,12 @@ const labels = getLabels(Astro, {
   },
 });
 
-const prefix = Astro.params.lang ? `/${Astro.params.lang}` : '';
+const prefix = getLocale(Astro);
 ---
 
 <div class="flex gap-2 items-center">
-  <a href={`${prefix}/legal/privacy-policy`} class="link text-xs">{labels['privacy_policy']}</a>
+  <a href={`/${prefix}/legal/privacy-policy`} class="link text-xs">{labels['privacy_policy']}</a>
   <!-- <a class="link text-xs">Cookies Manager</a> -->
-  <a href={`${prefix}/legal/terms-of-service`} class="link text-xs">{labels['terms_of_service']}</a>
+  <a href={`/${prefix}/legal/terms-of-service`} class="link text-xs">{labels['terms_of_service']}</a>
   <!-- <a class="link text-xs">RSS</a> -->
 </div>

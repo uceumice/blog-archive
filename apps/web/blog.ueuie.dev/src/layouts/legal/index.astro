@@ -1,0 +1,86 @@
+---
+import RunningPathings from '~/components/background/running-pathings/running-pathings.astro';
+import Footer from '~/components/footer/footer.astro';
+import Header from '~/components/header/header.astro';
+import { getCollection } from 'astro:content';
+import Head from '~/components/head/index.astro';
+import Untranslated from '~/layouts/legal/components/untranslated.astro';
+import { parseContentCollectionSlug } from '~/utils/contents/parse-collection-slug';
+import { Locale, locales } from '~/utils/i18n';
+
+interface Props {
+  title: string;
+  flags?: {
+    untranslated?: boolean;
+  };
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const { title, flags } = Astro.props;
+/* ------------------------------------ - ----------------------------------- */
+
+const entries = await getCollection('content', (entry) => {
+  const [entryLocale, { section }] = parseContentCollectionSlug(entry.slug);
+  return entryLocale === locale && section === 'legal';
+});
+
+const links =
+  entries.length > 0
+    ? entries
+    : await getCollection('content', (entry) => {
+        const [entryLocale, { section }] = parseContentCollectionSlug(entry.slug);
+        return entryLocale === locales[0] && section === 'legal';
+      });
+---
+
+<html lang={locale} dir="ltr" class="w-full h-full">
+  <head>
+    <Head />
+    <title>{title} | Legal</title>
+  </head>
+  <body class:list={['w-full h-full', 'flex flex-col items-stretch']}>
+    <div class:list={['w-full h-full', 'flex flex-col justify-between items-center']}>
+      <RunningPathings />
+      <!--  -->
+      <Header />
+      <div
+        id="scrollbar-area"
+        class:list={['prose sm:prose-sm', 'px-4', 'backdrop-blur-xl', 'border-x border-x-primary', 'max-sm:border-none']}
+      >
+        <main class:list={['pt-10 pb-24', 'text-justify', 'text-sm']}>
+          <div class:list={['w-full', 'flex justify-between items-center gap-8']}>
+            <h1 class="text-4xl text-base-content font-black pt-4" style="margin-bottom: 0;">
+              {title}
+            </h1>
+            {flags?.untranslated && <Untranslated />}
+          </div>
+          <div class:list={['w-full']}>
+            <div class="text-sm breadcrumbs p-0">
+              <ul style="padding-left:0">
+                <li style="padding-left:0"><a href="/">UEUIE</a></li>
+                <li>{title}</li>
+              </ul>
+            </div>
+            <!-- <button class="btn btn-sm">Go back</button> -->
+          </div>
+          <slot />
+          <div class:list={['w-full py-2', 'flex flex-col gap-2']}>
+            {
+              links.map((entry) => {
+                const [, { section }, { slug }] = parseContentCollectionSlug(entry.slug);
+                return (
+                  <a href={`/${locale}/${section}/${slug}`} class:list={['link']}>
+                    {entry.data.title}
+                  </a>
+                );
+              })
+            }
+          </div>
+        </main>
+      </div>
+      <Footer />
+    </div>
+    <!-- TODO: Scrolling Behavior -->
+    <script src="./scripts/scroll.ts"></script>
+  </body>
+</html>

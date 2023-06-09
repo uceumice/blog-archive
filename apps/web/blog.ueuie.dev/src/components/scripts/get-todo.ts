@@ -1,11 +1,11 @@
-import type { Lang } from '~/utils/i18n';
+import type { Locale } from '~/utils/i18n';
 
 export interface Todo {
   name: string;
   action: string;
 }
 
-const todos: Record<Lang, Todo[]> = {
+const todos: Record<Locale, Todo[]> = {
   en: [
     {
       name: 'git the neares gym in your area',
@@ -52,7 +52,7 @@ const todos: Record<Lang, Todo[]> = {
   ],
 };
 
-export function getTodos(count: number, lang: Lang) {
+export function getTodos(count: number, lang: Locale) {
   return Array.from(new Set(todos[lang]))
     .sort(() => Math.random() - 0.5)
     .slice(0, count);

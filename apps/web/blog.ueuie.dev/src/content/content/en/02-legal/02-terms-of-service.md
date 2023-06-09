@@ -1,9 +1,10 @@
 ---
-updated: 2023-06-01T02:19:09Z
+type: "docs"
+date: 
+  updated: 2023-06-09T05:21:09Z
+  written: 2023-06-01T02:19:09Z
+# ----
 title: 'Terms of Service'
-slugs:
-  - tos
-  - terms
 ---
 
 These Terms of Service ("Agreement") govern your use of the website at [https://ueuie.dev](https://ueuie.dev) ("Website"), provided by Alexandru Tocar ("Owner"). By accessing or using the Website, you agree to be bound by these terms. If you do not agree with any part of these terms, you must not use the Website.

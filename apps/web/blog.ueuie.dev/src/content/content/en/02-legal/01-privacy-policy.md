@@ -1,8 +1,10 @@
 ---
-updated: 2023-06-01T02:19:09Z
+type: "docs"
+date: 
+  updated: 2023-06-09T05:21:09Z
+  written: 2023-06-01T02:19:09Z
+# ----
 title: 'Privacy Policy'
-slugs:
-  - privacy
 ---
 
 At UEUIE, accessible from [https://ueuie.dev](https://ueuie.dev), one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by UEUIE and how we use it.
