@@ -2,6 +2,7 @@
     "name": "@uceumice/constants",
     "main": "./dist/index.cjs",
     "type": "module",
+    "module": "./dist/index.mjs",
     "typings": "./dist/index.d.ts",
     "scripts": {
         "build": "tsup",
