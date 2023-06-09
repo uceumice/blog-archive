@@ -1,9 +1,25 @@
 import type { AstroGlobal } from 'astro';
-import { lang as locales } from '@uceumice/constants';
 import { z } from 'zod';
 
-export type Locale = (typeof locales)[number];
+/* -------------------------------------------------------------------------- */
+/*                                  Constants                                 */
+/* -------------------------------------------------------------------------- */
+export const localesLabels = {
+  en: 'English',
+  de: 'Deutsch',
+  ua: 'Українська',
+} as const;
 
+export const locales = Object.keys(localesLabels) as ['en', 'de', 'ua'];
+
+/* -------------------------------------------------------------------------- */
+/*                                    Types                                   */
+/* -------------------------------------------------------------------------- */
+export type Locale = keyof typeof localesLabels;
+
+/* -------------------------------------------------------------------------- */
+/*                                   Parser                                   */
+/* -------------------------------------------------------------------------- */
 export function parseLocale(value: unknown) {
   try {
     return z.enum(locales).parse(value);
@@ -12,7 +28,9 @@ export function parseLocale(value: unknown) {
   }
 }
 
-// ----
+/**
+ * Get the locale from "global" `{locale}` parameter...
+ */
 export function getLocale({ params }: AstroGlobal): Locale {
   let locale: Locale | null = null;
 
@@ -24,12 +42,6 @@ export function getLocale({ params }: AstroGlobal): Locale {
 
   return locales[0];
 }
-
-// type Labels<L extends Record<string, string | ((...args: any[]) => string)>> = {
-//   [K in keyof L]: L[K] extends ((...args: any[]) => string)
-//   ? (...args: Parameters<L[K]>) => Record<Lang, string>
-//   : Record<Lang, string>;
-// };
 
 export const getLabels = function <
   T extends Record<string, string | ((...args: unknown[]) => string)>,
@@ -51,5 +63,3 @@ export const getLabels = function <
     })
   ) as T;
 };
-
-export { locales };

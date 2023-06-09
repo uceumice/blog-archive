@@ -1,6 +1,5 @@
 import { assign, createMachine } from 'xstate';
-import type { Locale } from '~/utils/i18n';
-import { lang } from '@uceumice/constants';
+import { locales, Locale } from '~/utils/i18n';
 import { tip } from './select';
 import { store } from '~/components/scripts/auto/locale/store';
 
@@ -9,7 +8,7 @@ import { store } from '~/components/scripts/auto/locale/store';
 /* -------------------------------------------------------------------------- */
 const tooltip = {
   content: (selected: Locale) => {
-    const tooltipContent = lang.map((locale) => (locale === selected ? `|${locale}|` : locale));
+    const tooltipContent = locales.map((locale) => (locale === selected ? `|${locale}|` : locale));
     return tooltipContent.join(' ');
   },
 };
@@ -102,23 +101,23 @@ export const xstate = createMachine(
   {
     actions: {
       'content.selected.next': assign({
-        selected: (ctx) => lang[(lang.indexOf(ctx.selected || lang[0]) + 1) % lang.length]!,
+        selected: (ctx) => locales[(locales.indexOf(ctx.selected || locales[0]) + 1) % locales.length]!,
       }),
       'content.selected.sync': (ctx) => {
         // [1] sync the local storage
-        store.selected.set(ctx.selected || lang[0]);
-        store.prefered.set(ctx.selected || lang[0]);
+        store.selected.set(ctx.selected || locales[0]);
+        store.prefered.set(ctx.selected || locales[0]);
 
         console.log({ ctx });
 
         // [2] sync the location
         if (ctx.prefixed) {
           const [, ...href] = window.location.pathname.slice(1).split('/');
-          window.location.replace(`/${ctx.selected || lang[0]}/${href.join('/')}`);
+          window.location.replace(`/${ctx.selected || locales[0]}/${href.join('/')}`);
         }
       },
       'content.selected.sync.tooltip-content': (ctx) => {
-        tip.setAttribute('data-tip', tooltip.content(ctx.selected || lang[0]));
+        tip.setAttribute('data-tip', tooltip.content(ctx.selected || locales[0]));
       },
     },
   }

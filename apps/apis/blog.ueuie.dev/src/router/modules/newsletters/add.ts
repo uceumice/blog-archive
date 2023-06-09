@@ -6,16 +6,13 @@ import { nanoid } from 'nanoid';
 import { dayjs } from '@/server/utils/date';
 import { type MailDataRequired } from '@sendgrid/mail';
 import { FetchError } from 'ohmyfetch';
-import { lang, pref } from '@uceumice/constants';
+import { locales } from '@/server/utils/i18n';
 
 /* ------------------------------- validation ------------------------------- */
 const schema = {
   input: z.object({
     email: z.string(),
-    lang: z.enum(lang),
-    pref: z.object({
-      mode: z.enum(pref.mode),
-    }),
+    locale: z.enum(locales),
   }),
   output: z.boolean(),
 };

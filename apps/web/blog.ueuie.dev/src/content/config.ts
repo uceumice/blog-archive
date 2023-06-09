@@ -1,5 +1,5 @@
 import { defineCollection, reference, z } from 'astro:content';
-import { lang } from '@uceumice/constants';
+import { locales } from '~/utils/i18n';
 
 /* -------------------------------------------------------------------------- */
 /*                                 Content Types                              */
@@ -33,7 +33,7 @@ export const author = z.object({
     joined: z.coerce.date(),
   }),
   languages: z
-    .array(z.enum(lang))
+    .array(z.enum(locales))
     .nonempty()
     .refine((items) => new Set(items).size === items.length, {
       message: 'Language cannot be referenced more then once',

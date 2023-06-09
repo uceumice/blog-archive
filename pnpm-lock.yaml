@@ -32,7 +32,6 @@ importers:
       '@sendgrid/mail': ^7.7.0
       '@trpc-limiter/core': ^0.0.8
       '@trpc/server': ^10.29.1
-      '@uceumice/constants': workspace:*
       '@uceumice/eslint-config': workspace:*
       '@uceumice/prettier-config': workspace:*
       '@uceumice/root': workspace:*
@@ -48,7 +47,6 @@ importers:
     dependencies:
       '@trpc-limiter/core': 0.0.8_miub2ywp2vhc6coi3uaamzmkmy
       '@trpc/server': 10.29.1
-      '@uceumice/constants': link:../../../packages/ueuiei/constants
       '@uceumice/root': link:../../..
       cors: 2.8.5
       dayjs: 1.11.8
@@ -83,7 +81,6 @@ importers:
       '@trpc/client': ^10.29.1
       '@trpc/server': ^10.29.1
       '@uceumice/blog.ueuie.dev.api': workspace:*
-      '@uceumice/constants': workspace:*
       '@uceumice/prettier-config': workspace:*
       astro: ^2.6.1
       clsx: ^1.2.1
@@ -109,7 +106,6 @@ importers:
       '@tanstack/solid-query': 4.29.11_solid-js@1.7.6
       '@trpc/client': 10.29.1_@trpc+server@10.29.1
       '@trpc/server': 10.29.1
-      '@uceumice/constants': link:../../../packages/ueuiei/constants
       astro: 2.6.1
       clsx: 1.2.1
       dayjs: 1.11.8
@@ -147,12 +143,6 @@ importers:
       prettier: 2.8.8
 
   packages/config/tsup-configuration:
-    specifiers:
-      tsup: ^6.7.0
-    devDependencies:
-      tsup: 6.7.0
-
-  packages/ueuiei/constants:
     specifiers:
       tsup: ^6.7.0
     devDependencies:

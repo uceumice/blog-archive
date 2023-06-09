@@ -2,7 +2,6 @@ import { Bell, BellFill } from './components/icons';
 import { SubmitHandler, createForm, zodForm } from '@modular-forms/solid';
 import { NewsletterSubscription, schemaNewsletterSubscription } from './modules/validation';
 import { blinking as createBlinkingDots } from './components/hooks/create-blinking';
-import { trpc } from '~/utils/trpc';
 import { clsx } from 'clsx';
 
 // ----
@@ -12,7 +11,7 @@ export function NewsletterSubscription() {
     validate: zodForm(schemaNewsletterSubscription),
   });
 
-  const onSubmit: SubmitHandler<NewsletterSubscription> = ({ email }) => {
+  const onSubmit: SubmitHandler<NewsletterSubscription> = () => {
     // TODO: Complete the email notifications functionality...
     // trpc.newsletter.add.mutate({ email, lang: 'en', pref: { mode: 'light' } }).then((value) => {
     //   console.log({ value });

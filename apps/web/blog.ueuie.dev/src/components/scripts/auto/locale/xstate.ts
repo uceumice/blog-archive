@@ -1,6 +1,6 @@
 import { assign, createMachine } from 'xstate';
 import { Locale, parseLocale } from '~/utils/i18n';
-import { lang } from '@uceumice/constants';
+import { locales } from '~/utils/i18n';
 import { store } from './store';
 
 /* -------------------------------------------------------------------------- */
@@ -89,7 +89,7 @@ export const xstate = createMachine(
         const [prefix] = window.location.pathname.slice(1).split('/');
         if (!prefix) return { prefixed: false };
 
-        const locale = parseLocale.lang(prefix);
+        const locale = parseLocale(prefix);
         if (!locale) return { prefixed: false };
 
         return { selected: locale, prefixed: true };
@@ -98,7 +98,7 @@ export const xstate = createMachine(
         selected: store.prefered.get(),
       }),
       'get.locale.fallback': assign({
-        selected: lang[0],
+        selected: locales[0],
       }),
       /* ---------------------------------- sync ---------------------------------- */
       'sync.to.local-storage': (ctx) => {
@@ -107,7 +107,7 @@ export const xstate = createMachine(
 
         // [2] check if the prefered locale is set, if not set
         const prefered_ = store.prefered.get();
-        if (prefered_ === null || parseLocale.lang(prefered_) === null) {
+        if (prefered_ === null || parseLocale(prefered_) === null) {
           store.prefered.set(ctx.selected!);
         }
 
@@ -121,7 +121,7 @@ export const xstate = createMachine(
           res.json()
         );
         if (!response) throw Error();
-        if (!parseLocale.lang(response)) throw Error();
+        if (!parseLocale(response)) throw Error();
         return response as Locale;
       },
     },
