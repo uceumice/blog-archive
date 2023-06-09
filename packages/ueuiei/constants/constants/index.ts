@@ -13,4 +13,4 @@ const pref = {
 
 
 
-export { lang, pref };
+module.exports= { lang, pref };
