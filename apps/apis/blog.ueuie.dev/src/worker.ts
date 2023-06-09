@@ -10,7 +10,7 @@ export default {
           // @ts-ignore
           process.env.NODE_ENV === 'development'
             ? {
-              'Access-Control-Allow-Origin': 'blog.',
+              'Access-Control-Allow-Origin': '*',
               'Access-Control-Allow-Methods': '*',
               'Access-Control-Allow-Headers': '*',
               'Access-Control-Max-Age': '*',
