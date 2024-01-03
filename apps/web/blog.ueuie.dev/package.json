@@ -44,6 +44,6 @@
     "@uceumice/prettier-config": "workspace:*",
     "daisyui": "^3.0.3",
     "tailwind-scrollbar": "^3.0.4",
-    "wrangler": "^3.1.1"
+    "wrangler": "^3.19.0"
   }
 }
